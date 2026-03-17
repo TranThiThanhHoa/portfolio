@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tran Thi Thanh Hoa — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0F0E0C;--bg-2:#181714;--bg-3:#211F1C;--bg-card:#1C1A17;
+  --border:rgba(255,255,255,0.08);--border-md:rgba(255,255,255,0.14);
+  --text:#EDE9E3;--text-2:#A09891;--text-3:#5C5650;
+  --accent:#E8633A;--accent-dk:rgba(232,99,58,0.15);--accent-glow:rgba(232,99,58,0.25);
+  --teal:#3DC99A;--teal-dk:rgba(61,201,154,0.12);
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --nav-h:56px;
+  --ease:cubic-bezier(0.4,0,0.2,1);
+}
+html{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased;scroll-behavior:smooth;}
+a{color:var(--accent);text-decoration:none;}
+::selection{background:var(--accent-dk);color:var(--accent);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(15,14,12,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;}
+.nav-logo{font-family:var(--serif);font-size:17px;color:var(--text);}
+.nav-logo span{color:var(--accent);}
+.nav-links{display:flex;gap:4px;}
+.nav-links a{font-size:12px;color:var(--text-3);padding:5px 11px;border-radius:100px;transition:color 0.2s,background 0.2s;}
+.nav-links a:hover{color:var(--text);background:var(--bg-3);}
+.nav-links a.active{color:var(--accent);background:var(--accent-dk);}
+.nav-cv{font-size:12px;color:var(--accent);border:1px solid var(--accent);padding:5px 14px;border-radius:100px;transition:background 0.2s,color 0.2s;cursor:pointer;background:transparent;font-family:var(--sans);}
+.nav-cv:hover{background:var(--accent);color:#fff;}
+
+/* PROGRESS */
+.progress-bar{position:fixed;top:var(--nav-h);left:0;height:2px;background:var(--accent);width:0%;z-index:99;transition:width 0.08s linear;}
+
+/* WRAP */
+.wrap{max-width:860px;margin:0 auto;padding-top:var(--nav-h);}
+
+/* HERO */
+.hero{padding:60px 40px 48px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:start;border-bottom:1px solid var(--border);}
+.photo-col{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.photo-ring{width:90px;height:90px;border-radius:50%;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;background:var(--bg-3);transition:box-shadow 0.3s;}
+.photo-ring:hover{box-shadow:0 0 0 5px var(--accent-glow);}
+.photo-initials{font-family:var(--serif);font-size:28px;color:var(--accent);}
+.photo-hint{font-size:10px;color:var(--text-3);text-align:center;max-width:72px;line-height:1.4;}
+.hero-tag{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:10px;}
+.hero-name{font-family:var(--serif);font-size:46px;line-height:1.0;color:var(--text);margin-bottom:6px;}
+.hero-name em{font-style:italic;color:var(--accent);}
+.hero-subtitle{font-size:13px;color:var(--text-2);margin-bottom:18px;}
+.hero-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.contact-list{display:flex;flex-direction:column;gap:5px;}
+.contact-list a,.contact-list span{font-size:12px;color:var(--text-2);display:flex;align-items:center;gap:7px;transition:color 0.2s;}
+.contact-list a:hover{color:var(--accent);}
+.c-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+.summary-text{font-size:12px;color:var(--text-2);line-height:1.75;border-left:2px solid var(--accent);padding-left:14px;}
+.hero-badges{display:flex;gap:7px;margin-top:18px;flex-wrap:wrap;}
+.badge{font-size:11px;padding:3px 10px;border-radius:100px;border:1px solid var(--border-md);color:var(--text-3);transition:border-color 0.2s,color 0.2s;}
+.badge:hover{border-color:var(--accent);color:var(--accent);}
+
+/* SECTION */
+.section{padding:36px 40px 0;}
+.section:last-child{padding-bottom:64px;}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;cursor:pointer;user-select:none;}
+.sec-head:hover .sec-label{color:var(--text);}
+.sec-label{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:500;white-space:nowrap;transition:color 0.2s;}
+.sec-line{flex:1;height:1px;background:var(--border);}
+.sec-toggle{width:18px;height:18px;border-radius:50%;border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color 0.2s,background 0.2s;}
+.sec-head:hover .sec-toggle{border-color:var(--accent);background:var(--accent-dk);}
+.sec-toggle svg{transition:transform 0.3s var(--ease);}
+.sec-toggle.open svg{transform:rotate(180deg);}
+.sec-body{overflow:hidden;transition:max-height 0.42s var(--ease),opacity 0.3s;}
+.sec-body.collapsed{max-height:0!important;opacity:0;pointer-events:none;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.skill-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;}
+.skill-card:hover{border-color:var(--border-md);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3);}
+.skill-title{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:9px;}
+.tags{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{font-size:11px;padding:2px 9px;border-radius:100px;font-weight:500;}
+.tag-accent{background:var(--accent-dk);color:var(--accent);}
+.tag-teal{background:var(--teal-dk);color:var(--teal);}
+.tag-gray{background:var(--bg-3);color:var(--text-2);}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;}
+.tl-item{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--border);}
+.tl-item:last-child{border-bottom:none;}
+.tl-meta{padding-top:3px;}
+.tl-date{font-size:11px;color:var(--text-3);line-height:1.5;}
+.tl-co{font-size:11px;color:var(--text-2);font-weight:500;margin-top:3px;}
+.tl-content{cursor:pointer;}
+.tl-content-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.tl-role{font-family:var(--serif);font-size:18px;color:var(--text);margin-bottom:3px;line-height:1.2;transition:color 0.2s;}
+.tl-content:hover .tl-role{color:var(--accent);}
+.tl-loc{font-size:11px;color:var(--text-3);margin-bottom:8px;}
+.tl-arrow{flex-shrink:0;margin-top:5px;transition:transform 0.3s var(--ease);}
+.tl-arrow.open{transform:rotate(180deg);}
+.tl-detail{overflow:hidden;transition:max-height 0.35s var(--ease),opacity 0.25s;}
+.tl-detail.hidden{max-height:0!important;opacity:0;}
+.tl-bullets{list-style:none;display:flex;flex-direction:column;gap:3px;}
+.tl-bullets li{font-size:12px;color:var(--text-2);padding-left:13px;position:relative;line-height:1.6;}
+.tl-bullets li::before{content:'–';position:absolute;left:0;color:var(--accent);}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.chip{font-size:10px;background:var(--bg-3);color:var(--text-3);padding:2px 7px;border-radius:4px;}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.proj-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;}
+.proj-card:hover{border-color:var(--border-md);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.4);}
+.proj-thumb{height:120px;display:flex;align-items:center;justify-content:center;font-size:40px;position:relative;}
+.proj-thumb-av{background:linear-gradient(135deg,#1a1230,#2d1f4a);}
+.proj-thumb-vr{background:linear-gradient(135deg,#0d1f18,#1a3a2a);}
+.proj-thumb-cad{background:linear-gradient(135deg,#1a1208,#2e2010);}
+.proj-thumb-avatar{background:linear-gradient(135deg,#0d1a2e,#12253d);}
+.proj-tag-badge{position:absolute;top:10px;right:10px;font-size:10px;padding:2px 8px;border-radius:100px;font-weight:500;}
+.ptag-accent{background:var(--accent-dk);color:var(--accent);}
+.ptag-teal{background:var(--teal-dk);color:var(--teal);}
+.proj-body{padding:14px 16px;}
+.proj-title{font-family:var(--serif);font-size:16px;color:var(--text);margin-bottom:5px;line-height:1.25;}
+.proj-desc{font-size:12px;color:var(--text-2);line-height:1.6;margin-bottom:10px;}
+
+/* PUBLICATIONS */
+.pub-list{display:flex;flex-direction:column;gap:10px;}
+.pub-item{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;display:flex;gap:14px;align-items:flex-start;transition:border-color 0.25s,transform 0.2s;}
+.pub-item:hover{border-color:var(--border-md);transform:translateX(3px);}
+.pub-venue{font-size:10px;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent);font-weight:500;white-space:nowrap;padding-top:2px;min-width:54px;}
+.pub-title{font-size:13px;color:var(--text);line-height:1.5;}
+
+/* CERTIFICATIONS */
+.cert-list{display:flex;flex-direction:column;gap:10px;}
+.cert-item{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;display:flex;align-items:center;gap:14px;transition:border-color 0.25s,transform 0.2s;}
+.cert-item:hover{border-color:var(--teal);transform:translateX(3px);}
+.cert-badge{width:32px;height:32px;border-radius:6px;background:var(--teal-dk);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cert-name{font-size:13px;color:var(--text);line-height:1.4;}
+.cert-issuer{font-size:11px;color:var(--text-3);margin-top:2px;}
+
+/* EDUCATION */
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:14px 16px;transition:border-color 0.25s,transform 0.25s;}
+.edu-card:hover{border-color:var(--border-md);transform:translateY(-2px);}
+.edu-degree{font-family:var(--serif);font-size:15px;color:var(--text);line-height:1.25;margin-bottom:6px;}
+.edu-school{font-size:11px;color:var(--text-2);font-weight:500;margin-bottom:3px;}
+.edu-years{font-size:11px;color:var(--text-3);margin-bottom:8px;}
+.edu-note{font-size:11px;color:var(--teal);background:var(--teal-dk);padding:3px 8px;border-radius:100px;display:inline-block;}
+
+/* LANGUAGES */
+.lang-row{display:flex;gap:10px;}
+.lang-item{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:12px 16px;flex:1;display:flex;align-items:center;justify-content:space-between;transition:border-color 0.2s;}
+.lang-item:hover{border-color:var(--border-md);}
+.lang-name{font-size:13px;font-weight:500;color:var(--text);}
+.lang-level{font-size:11px;color:var(--text-3);}
+
+/* CONTACT FORM */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.contact-grid .full{grid-column:1/-1;}
+.form-field{display:flex;flex-direction:column;gap:5px;}
+.form-label{font-size:11px;color:var(--text-3);letter-spacing:0.06em;text-transform:uppercase;}
+.form-input,.form-textarea{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-family:var(--sans);font-size:13px;color:var(--text);outline:none;transition:border-color 0.2s,box-shadow 0.2s;width:100%;}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--text-3);}
+.form-input:focus,.form-textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dk);}
+.form-textarea{height:100px;line-height:1.6;resize:none;}
+.form-submit{background:var(--accent);color:#fff;border:none;padding:10px 28px;border-radius:100px;font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;transition:opacity 0.2s,transform 0.15s;margin-top:6px;}
+.form-submit:hover{opacity:0.88;transform:translateY(-1px);}
+.form-note{font-size:11px;color:var(--text-3);margin-top:8px;}
+.form-success{display:none;padding:20px 0;font-size:13px;color:var(--teal);}
+
+/* CV MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.72);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--bg-2);border:1px solid var(--border-md);border-radius:14px;padding:28px 32px;max-width:400px;width:90%;position:relative;}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-3);font-size:20px;cursor:pointer;line-height:1;transition:color 0.2s;font-family:var(--sans);}
+.modal-close:hover{color:var(--text);}
+.modal-title{font-family:var(--serif);font-size:22px;color:var(--text);margin-bottom:6px;}
+.modal-sub{font-size:12px;color:var(--text-2);margin-bottom:20px;line-height:1.6;}
+.modal-actions{display:flex;flex-direction:column;gap:10px;}
+.modal-btn{padding:11px 18px;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border-md);background:var(--bg-3);color:var(--text-2);display:flex;align-items:center;gap:10px;transition:border-color 0.2s,color 0.2s,background 0.2s;text-decoration:none;}
+.modal-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dk);}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(14px);transition:opacity 0.5s var(--ease),transform 0.5s var(--ease);}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;padding:36px 20px 28px;}
+  .photo-col{flex-direction:row;}
+  .section{padding:28px 20px 0;}
+  .skills-grid,.edu-grid,.projects-grid{grid-template-columns:1fr;}
+  .tl-item{grid-template-columns:1fr;gap:6px;}
+  .tl-meta{display:flex;gap:10px;align-items:center;}
+  .lang-row{flex-direction:column;}
+  .hero-cols{grid-template-columns:1fr;gap:14px;}
+  .hero-name{font-size:34px;}
+  .contact-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<nav>
+  <div class="nav-logo">T.<span>H</span></div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#publications">Publications</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav-cv" onclick="document.getElementById('cvModal').classList.add('open')">Download CV</button>
+</nav>
+
+<!-- CV MODAL -->
+<div class="modal-overlay" id="cvModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('cvModal').classList.remove('open')">&#x2715;</button>
+    <div class="modal-title">Download CV</div>
+    <p class="modal-sub">Choose your format. Update the href links once you host your PDF.</p>
+    <div class="modal-actions">
+      <a href="portfolio_tran_thi_thanh_hoa.html" download class="modal-btn">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1.5" y="1.5" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M5 7.5h5M7.5 5v5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Download HTML portfolio
+      </a>
+      <a href="#" class="modal-btn" onclick="alert('Link your PDF file here: replace href=\"#\" with your PDF URL.')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1.5" y="1" width="9" height="13" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M7.5 1v4h5" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M4 7.5h7M4 10h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        Download PDF (link your file)
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="photo-col">
+    <div class="photo-ring"><span class="photo-initials">TH</span></div>
+    <span class="photo-hint">Replace with your photo</span>
+  </div>
+  <div class="hero-body">
+    <div class="hero-tag">Portfolio · Human Factors Engineer</div>
+    <h1 class="hero-name">Tran Thi<br><em>Thanh Hoa</em></h1>
+    <p class="hero-subtitle">PhD · Human–Machine Interaction · VR Simulation · Autonomous Systems</p>
+    <div class="hero-cols">
+      <div class="contact-list">
+        <a href="mailto:tthithanhhoa@gmail.com"><span class="c-dot"></span>tthithanhhoa@gmail.com</a>
+        <a href="tel:+33664337524"><span class="c-dot"></span>+33 06 64 33 75 24</a>
+        <a href="#"><span class="c-dot"></span>LinkedIn</a>
+        <span><span class="c-dot"></span>Rennes, France</span>
+      </div>
+      <p class="summary-text">PhD researcher in HMI with expertise in usability studies, VR simulation, and eye-tracking. Published at IEEE VR, ISMAR &amp; CAD. Fluent in English and French.</p>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">3+ years research</span>
+      <span class="badge">3 publications</span>
+      <span class="badge">IEEE VR · ISMAR · CAD</span>
+      <span class="badge">France–Australia Cotutelle</span>
+      <span class="badge">Eiffel Excellence Scholar</span>
+    </div>
+  </div>
+</header>
+
+<!-- SKILLS -->
+<section class="section fade-in" id="skills">
+  <div class="sec-head" onclick="toggleSection('skills-body','skills-tog')">
+    <span class="sec-label">Skills</span><span class="sec-line"></span>
+    <div class="sec-toggle open" id="skills-tog"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+  <div class="sec-body" id="skills-body" style="max-height:600px;">
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-title">Human Factors &amp; Ergonomics</div>
+        <div class="tags"><span class="tag tag-accent">HMI Analysis</span><span class="tag tag-accent">Usability Testing</span><span class="tag tag-accent">Eye-Tracking (Tobii)</span><span class="tag tag-accent">User Interviews</span><span class="tag tag-accent">Experimental Design</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">3D Simulation &amp; Prototyping</div>
+        <div class="tags"><span class="tag tag-teal">VR / AR</span><span class="tag tag-teal">Unity</span><span class="tag tag-teal">Blender</span><span class="tag tag-teal">SolidWorks</span><span class="tag tag-teal">Creo</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Programming &amp; Data Analysis</div>
+        <div class="tags"><span class="tag tag-gray">Python</span><span class="tag tag-gray">C++</span><span class="tag tag-gray">C#</span><span class="tag tag-gray">MATLAB</span><span class="tag tag-gray">R</span><span class="tag tag-gray">GitHub</span></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-title">Collaboration &amp; Tools</div>
+        <div class="tags"><span class="tag tag-gray">Miro</span><span class="tag tag-gray">Redmine</span><span class="tag tag-gray">Visual Studio</span><span class="tag tag-gray">Git</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section fade-in" id="experience">
+  <div class="sec-head" onclick="toggleSection('exp-body','exp-tog')">
+    <span class="sec-label">Experience</span><span class="sec-line"></span>
+    <div class="sec-toggle open" id="exp-tog"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+  <div class="sec-body" id="exp-body" style="max-height:1400px;">
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-meta"><div class="tl-date">09/2022 – 10/2025</div><div class="tl-co">IMT Atlantique &amp;<br>Adelaide University</div></div>
+        <div class="tl-content" onclick="toggleDetail('d1','a1')">
+          <div class="tl-content-head">
+            <div><div class="tl-role">PhD Researcher — HMI</div><div class="tl-loc">Brest, France &amp; Australia · Cotutelle</div></div>
+            <svg class="tl-arrow open" id="a1" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="#5C5650" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="tl-detail" id="d1" style="max-height:300px;">
+            <ul class="tl-bullets">
+              <li>Researched human interaction with autonomous vehicle systems in simulated environments.</li>
+              <li>Applied qualitative &amp; quantitative methods: interviews, surveys, and eye-tracking.</li>
+              <li>Built a VR-based driving simulator to prototype and evaluate visual interaction concepts.</li>
+              <li>Analysed user behaviour and interaction patterns to identify usability issues.</li>
+              <li>Published and presented at IEEE VR, ISMAR, and ICAT.</li>
+            </ul>
+            <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Python</span><span class="chip">R</span><span class="chip">Blender</span><span class="chip">Tobii</span><span class="chip">Quest Pro</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta"><div class="tl-date">02/2022 – 08/2022</div><div class="tl-co">TechViz</div></div>
+        <div class="tl-content" onclick="toggleDetail('d2','a2')">
+          <div class="tl-content-head">
+            <div><div class="tl-role">R&amp;D Engineer — C++ / VR</div><div class="tl-loc">Paris, France</div></div>
+            <svg class="tl-arrow open" id="a2" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="#5C5650" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="tl-detail" id="d2" style="max-height:200px;">
+            <ul class="tl-bullets">
+              <li>Developed and improved an automated testing platform with engineering teams.</li>
+              <li>Collected and analysed user feedback to enhance usability and workflow efficiency.</li>
+            </ul>
+            <div class="chips"><span class="chip">C++</span><span class="chip">C#</span><span class="chip">JavaScript</span><span class="chip">Git</span><span class="chip">HTC Vive</span><span class="chip">CAVE</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta"><div class="tl-date">02/2021 – 08/2021</div><div class="tl-co">CNRS</div></div>
+        <div class="tl-content" onclick="toggleDetail('d3','a3')">
+          <div class="tl-content-head">
+            <div><div class="tl-role">Research Engineer — Graduation Project</div><div class="tl-loc">Grenoble, France</div></div>
+            <svg class="tl-arrow open" id="a3" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="#5C5650" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="tl-detail" id="d3" style="max-height:200px;">
+            <ul class="tl-bullets">
+              <li>Designed an immersive VR modelling system with full 3D operation support.</li>
+              <li>Managed full cycle: concept → prototype → user study → publication.</li>
+              <li>Presented at CAD 2021 conference.</li>
+            </ul>
+            <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">SteamVR</span><span class="chip">FreeCAD</span><span class="chip">HTC Vive</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-meta"><div class="tl-date">02/2021 – 06/2021</div><div class="tl-co">Erasmus+</div></div>
+        <div class="tl-content" onclick="toggleDetail('d4','a4')">
+          <div class="tl-content-head">
+            <div><div class="tl-role">Team Leader — AVATAR Project</div><div class="tl-loc">Grenoble, France</div></div>
+            <svg class="tl-arrow open" id="a4" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="#5C5650" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="tl-detail" id="d4" style="max-height:200px;">
+            <ul class="tl-bullets">
+              <li>Led 5 students from 4 European universities on a digital twin VR simulation project.</li>
+              <li>Managed timeline, tasks, code reviews, and cross-cultural collaboration.</li>
+            </ul>
+            <div class="chips"><span class="chip">Unity</span><span class="chip">Git</span><span class="chip">Creo</span><span class="chip">ROS</span><span class="chip">MATLAB</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section fade-in" id="projects">
+  <div class="sec-head" onclick="toggleSection('proj-body','proj-tog')">
+    <span class="sec-label">Projects</span><span class="sec-line"></span>
+    <div class="sec-toggle open" id="proj-tog"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+  <div class="sec-body" id="proj-body" style="max-height:900px;">
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-thumb proj-thumb-av"><span>🚗</span><span class="proj-tag-badge ptag-accent">PhD Research</span></div>
+        <div class="proj-body">
+          <div class="proj-title">VR Driving Simulator — Autonomous Vehicles</div>
+          <p class="proj-desc">Prototype to evaluate how drivers interact with AV systems — measuring trust through HUD information changes tracked via eye-tracking.</p>
+          <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Quest Pro</span><span class="chip">Tobii</span><span class="chip">Python</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-thumb proj-thumb-vr"><span>🧊</span><span class="proj-tag-badge ptag-teal">Published · CAD 2021</span></div>
+        <div class="proj-body">
+          <div class="proj-title">Direct 3D Solid Modelling in VR</div>
+          <p class="proj-desc">Immersive VR system for direct solid modelling — resize, translate, rotate &amp; Boolean ops — built and evaluated in full user study.</p>
+          <div class="chips"><span class="chip">Unity</span><span class="chip">SteamVR</span><span class="chip">FreeCAD</span><span class="chip">HTC Vive</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-thumb proj-thumb-cad"><span>⚙️</span><span class="proj-tag-badge ptag-accent">R&amp;D · TechViz</span></div>
+        <div class="proj-body">
+          <div class="proj-title">Automated VR Testing Platform</div>
+          <p class="proj-desc">Improved an automated test platform for industrial VR applications, with user feedback loops to enhance workflow efficiency.</p>
+          <div class="chips"><span class="chip">C++</span><span class="chip">C#</span><span class="chip">CAVE</span><span class="chip">Git</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-thumb proj-thumb-avatar"><span>🌐</span><span class="proj-tag-badge ptag-teal">Erasmus+ · Open Source</span></div>
+        <div class="proj-body">
+          <div class="proj-title">AVATAR — Digital Twin VR Simulation</div>
+          <p class="proj-desc">Led 5-person international team to build a digital twin VR simulation — open-source 3D modelling contributions and code reviews.</p>
+          <div class="chips"><span class="chip">Unity</span><span class="chip">ROS</span><span class="chip">Creo</span><span class="chip">MATLAB</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section class="section fade-in" id="publications">
+  <div class="sec-head" onclick="toggleSection('pub-body','pub-tog')">
+    <span class="sec-label">Publications</span><span class="sec-line"></span>
+    <div class="sec-toggle open" id="pub-tog"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+  <div class="sec-body" id="pub-body" style="max-height:400px;">
+    <div class="pub-list">
+      <div class="pub-item"><div class="pub-venue">IEEE VR</div><div class="pub-title">Impact of Adding, Removing and Modifying Driving and Non-Driving Related Information on Trust in Autonomous Vehicles</div></div>
+      <div class="pub-item"><div class="pub-venue">CAD 2021</div><div class="pub-title">Benchmarking of 3D Modelling in Virtual Reality</div></div>
+      <div class="pub-item"><div class="pub-venue">Conference</div><div class="pub-title">Direct Solid Modelling in Virtual Reality for Systems Architecting</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section fade-in">
+  <div class="sec-head" onclick="toggleSection('cert-body','cert-tog')">
+    <span class="sec-label">Certifications</span><span class="sec-line"></span>
+    <div class="sec-toggle open" id="cert-tog"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+  <div class="sec-body" id="cert-body" style="max-height:400px;">
+    <div class="cert-list">
+      <div class="cert-item">
+        <div class="cert-badge"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="4.5" stroke="#3DC99A" stroke-width="1.2"/><path d="M5.5 13.5L8 12l2.5 1.5" stroke="#3DC99A" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        <div><div class="cert-name">Advanced Virtual and Augmented Reality Toolkit for Learning</div><div class="cert-issuer">Erasmus Mundus</div></div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-badge"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="4.5" stroke="#3DC99A" stroke-width="1.2"/><path d="M5.5 13.5L8 12l2.5 1.5" stroke="#3DC99A" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        <div><div class="cert-name">3D Interaction Design in Virtual Reality</div><div class="cert-issuer">Coursera · ID: 58YVZLJ89MV2</div></div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-badge"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="4.5" stroke="#3DC99A" stroke-width="1.2"/><path d="M5.5 13.5L8 12l2.5 1.5" stroke="#3DC99A" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        <div><div class="cert-name">Building 3D Interactive and Social VR</div><div class="cert-issuer">Coursera · ID: LMPVNEAREDMS</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section fade-in" id="education">
+  <div class="sec-head" onclick="toggleSection('edu-body','edu-tog')">
+    <span class="sec-label">Education</span><span class="sec-line"></span>
+    <div class="sec-toggle open" id="edu-tog"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+  <div class="sec-body" id="edu-body" style="max-height:400px;">
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">PhD in Computer Science</div>
+        <div class="edu-school">IMT Atlantique &amp; Adelaide University</div>
+        <div class="edu-years">2022 – 2025</div>
+        <span class="edu-note">France–Australia Cotutelle</span>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Engineer's Degree — Product Engineering</div>
+        <div class="edu-school">Grenoble INP</div>
+        <div class="edu-years">2018 – 2021</div>
+        <span class="edu-note">Eiffel Excellence Scholarship</span>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Engineer's Degree — Automated Production</div>
+        <div class="edu-school">Danang University of Technology</div>
+        <div class="edu-years">2015 – 2018</div>
+        <span class="edu-note">Top 1 of 80 students</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section class="section fade-in">
+  <div class="sec-head" onclick="toggleSection('lang-body','lang-tog')">
+    <span class="sec-label">Languages</span><span class="sec-line"></span>
+    <div class="sec-toggle open" id="lang-tog"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+  <div class="sec-body" id="lang-body" style="max-height:150px;">
+    <div class="lang-row">
+      <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Fluent</span></div>
+      <div class="lang-item"><span class="lang-name">French</span><span class="lang-level">Fluent</span></div>
+      <div class="lang-item"><span class="lang-name">Vietnamese</span><span class="lang-level">Native</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section fade-in" id="contact">
+  <div class="sec-head" onclick="toggleSection('contact-body','contact-tog')">
+    <span class="sec-label">Contact</span><span class="sec-line"></span>
+    <div class="sec-toggle open" id="contact-tog"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+  <div class="sec-body" id="contact-body" style="max-height:600px;">
+    <div id="contactForm">
+      <div class="contact-grid">
+        <div class="form-field"><label class="form-label">Name</label><input type="text" class="form-input" placeholder="Your name" id="cName"></div>
+        <div class="form-field"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="your@email.com" id="cEmail"></div>
+        <div class="form-field full"><label class="form-label">Company / Role</label><input type="text" class="form-input" placeholder="e.g. Renault · UX Researcher" id="cCompany"></div>
+        <div class="form-field full"><label class="form-label">Message</label><textarea class="form-textarea" placeholder="Tell me about the opportunity..." id="cMessage"></textarea></div>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Send message</button>
+      <p class="form-note">Opens your email client pre-filled — no server needed.</p>
+    </div>
+    <div class="form-success" id="formSuccess">&#10003; &nbsp; Your email client has been opened — thank you for reaching out!</div>
+  </div>
+</section>
+
+</div>
+
+<script>
+// Scroll progress
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('progress').style.width=Math.min(pct,100)+'%';
+});
+
+// Active nav highlight
+const navSections=['skills','experience','projects','publications','education','contact'];
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+      const lnk=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');
+      if(lnk)lnk.classList.add('active');
+    }
+  });
+},{rootMargin:'-40% 0px -55% 0px'});
+navSections.forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el);});
+
+// Fade in on scroll
+const fio=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fio.unobserve(e.target);}});
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>fio.observe(el));
+
+// Toggle collapsible section
+function toggleSection(bodyId,toggleId){
+  const b=document.getElementById(bodyId);
+  const t=document.getElementById(toggleId);
+  const closing=!b.classList.contains('collapsed');
+  b.classList.toggle('collapsed');
+  t.classList.toggle('open',!closing);
+}
+
+// Toggle timeline detail
+function toggleDetail(detailId,arrowId){
+  const d=document.getElementById(detailId);
+  const a=document.getElementById(arrowId);
+  const hiding=!d.classList.contains('hidden');
+  d.classList.toggle('hidden');
+  a.classList.toggle('open',!hiding);
+}
+
+// Contact form → mailto
+function submitForm(){
+  const name=document.getElementById('cName').value.trim();
+  const email=document.getElementById('cEmail').value.trim();
+  const company=document.getElementById('cCompany').value.trim();
+  const msg=document.getElementById('cMessage').value.trim();
+  if(!name||!email||!msg){alert('Please fill in your name, email, and message.');return;}
+  const sub=encodeURIComponent('Portfolio enquiry from '+name+(company?' ('+company+')':''));
+  const body=encodeURIComponent('Hi Thanh Hoa,\n\n'+msg+'\n\nBest regards,\n'+name+'\n'+email+(company?'\n'+company:''));
+  window.location.href='mailto:tthithanhhoa@gmail.com?subject='+sub+'&body='+body;
+  document.getElementById('contactForm').style.display='none';
+  document.getElementById('formSuccess').style.display='block';
+}
+</script>
+</body>
+</html>
