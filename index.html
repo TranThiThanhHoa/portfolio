@@ -2,511 +2,604 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Tran Thi Thanh Hoa — HMI Engineer & PhD Researcher</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
-/* ─── THEME TOKENS ─── */
+/* ══════════════════════════
+   TOKENS
+══════════════════════════ */
 [data-theme="dark"]{
-  --bg:          #0C0B09;
-  --bg-raised:   #141210;
-  --bg-card:     #181614;
-  --bg-hover:    #1E1C19;
-  --border:      rgba(255,255,255,0.07);
-  --border-md:   rgba(255,255,255,0.13);
-  --border-str:  rgba(255,255,255,0.22);
-  --text:        #F0EBE3;
-  --text-2:      #9E978E;
-  --text-3:      #58534D;
-  --accent:      #D4622E;
-  --accent-light:rgba(212,98,46,0.14);
-  --accent-glow: rgba(212,98,46,0.22);
-  --teal:        #2EB884;
-  --teal-light:  rgba(46,184,132,0.12);
-  --nav-bg:      rgba(12,11,9,0.92);
-  --shadow-card: 0 2px 12px rgba(0,0,0,0.4);
-  --shadow-hover:0 8px 32px rgba(0,0,0,0.55);
-  --thumb-av:    linear-gradient(140deg,#160e24,#251a38);
-  --thumb-vr:    linear-gradient(140deg,#0b1c14,#143024);
-  --thumb-cad:   linear-gradient(140deg,#1c1208,#2c1e0e);
-  --thumb-av2:   linear-gradient(140deg,#0c1a28,#13243a);
+  --page:      #09090B;
+  --surface:   #111113;
+  --card:      #17171A;
+  --hover:     #1D1D21;
+  --line:      rgba(255,255,255,0.06);
+  --line-md:   rgba(255,255,255,0.11);
+  --line-str:  rgba(255,255,255,0.20);
+  --hi:        #F2EEE8;
+  --mid:       #8C8680;
+  --lo:        #48443F;
+  --accent:    #CF5F2A;
+  --acc-dim:   rgba(207,95,42,0.14);
+  --acc-glo:   rgba(207,95,42,0.26);
+  --gold:      #C9973A;
+  --gold-dim:  rgba(201,151,58,0.13);
+  --nav-bg:    rgba(9,9,11,0.92);
+  --sh-sm:     0 1px 6px rgba(0,0,0,0.5);
+  --sh-md:     0 4px 18px rgba(0,0,0,0.55);
+  --sh-lg:     0 14px 44px rgba(0,0,0,0.65);
+  --c1:#7C3AED; --c1b:rgba(124,58,237,0.14); --c1d:#18132A;
+  --c2:#0284C7; --c2b:rgba(2,132,199,0.13);  --c2d:#0C1A26;
+  --c3:#059669; --c3b:rgba(5,150,105,0.13);  --c3d:#0B1E18;
+  --c4:#D97706; --c4b:rgba(217,119,6,0.14);  --c4d:#1E1609;
 }
 [data-theme="light"]{
-  --bg:          #F8F6F2;
-  --bg-raised:   #FFFFFF;
-  --bg-card:     #FFFFFF;
-  --bg-hover:    #F2EEE8;
-  --border:      rgba(0,0,0,0.08);
-  --border-md:   rgba(0,0,0,0.14);
-  --border-str:  rgba(0,0,0,0.28);
-  --text:        #1A1714;
-  --text-2:      #6B6560;
-  --text-3:      #A8A39D;
-  --accent:      #C4521E;
-  --accent-light:rgba(196,82,30,0.10);
-  --accent-glow: rgba(196,82,30,0.18);
-  --teal:        #1A8F65;
-  --teal-light:  rgba(26,143,101,0.10);
-  --nav-bg:      rgba(248,246,242,0.94);
-  --shadow-card: 0 1px 6px rgba(0,0,0,0.08);
-  --shadow-hover:0 6px 24px rgba(0,0,0,0.13);
-  --thumb-av:    linear-gradient(140deg,#e8e0f0,#d4c8e8);
-  --thumb-vr:    linear-gradient(140deg,#d8ede4,#c0ddd0);
-  --thumb-cad:   linear-gradient(140deg,#f0e8d8,#e4d4b8);
-  --thumb-av2:   linear-gradient(140deg,#d8e8f4,#c4d8ec);
+  --page:      #E8F2FB;
+  --surface:   #F2F8FD;
+  --card:      #FFFFFF;
+  --hover:     #EBF5FF;
+  --line:      rgba(14,75,140,0.09);
+  --line-md:   rgba(14,75,140,0.17);
+  --line-str:  rgba(14,75,140,0.30);
+  --hi:        #0B1929;
+  --mid:       #4A6A88;
+  --lo:        #95B3C8;
+  --accent:    #B84D1A;
+  --acc-dim:   rgba(184,77,26,0.10);
+  --acc-glo:   rgba(184,77,26,0.20);
+  --gold:      #A07820;
+  --gold-dim:  rgba(160,120,32,0.11);
+  --nav-bg:    rgba(232,242,251,0.95);
+  --sh-sm:     0 1px 5px rgba(14,75,140,0.08);
+  --sh-md:     0 4px 18px rgba(14,75,140,0.12);
+  --sh-lg:     0 14px 44px rgba(14,75,140,0.16);
+  --c1:#5B21B6; --c1b:rgba(91,33,182,0.09);  --c1d:#F0EBFD;
+  --c2:#0369A1; --c2b:rgba(3,105,161,0.09);  --c2d:#EBF5FD;
+  --c3:#047857; --c3b:rgba(4,120,87,0.09);   --c3d:#EAFAF4;
+  --c4:#B45309; --c4b:rgba(180,83,9,0.09);   --c4d:#FEF6EC;
 }
 
-/* ─── BASE ─── */
+/* ══════════════════════════
+   BASE
+══════════════════════════ */
 html{
-  font-family:'Inter',system-ui,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  font-size:14px;
-  line-height:1.65;
+  font-family:'Outfit',system-ui,sans-serif;
+  background:var(--page);color:var(--hi);
+  font-size:14px;line-height:1.65;
   -webkit-font-smoothing:antialiased;
   scroll-behavior:smooth;
-  transition:background 0.35s ease,color 0.35s ease;
+  transition:background .3s,color .3s;
 }
 a{color:var(--accent);text-decoration:none;}
-::selection{background:var(--accent-light);color:var(--accent);}
+::selection{background:var(--acc-dim);color:var(--accent);}
 
-/* ─── PROGRESS ─── */
-.progress{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--accent);z-index:200;transition:width 0.08s linear;}
+/* ══════════════════════════
+   PROGRESS
+══════════════════════════ */
+#prog{
+  position:fixed;top:0;left:0;height:3px;width:0%;z-index:300;
+  background:linear-gradient(90deg,var(--accent),var(--gold));
+  transition:width .08s linear;
+  border-radius:0 2px 2px 0;
+}
 
-/* ─── NAV ─── */
+/* ══════════════════════════
+   NAV
+══════════════════════════ */
 nav{
-  position:fixed;top:2px;left:0;right:0;z-index:100;
-  height:54px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 48px;
+  position:fixed;top:3px;left:0;right:0;z-index:200;
+  height:56px;padding:0 48px;
   background:var(--nav-bg);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-  transition:background 0.35s ease,border-color 0.35s ease;
+  backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .3s,border-color .3s;
 }
-.nav-logo{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:18px;font-weight:500;
-  color:var(--text);
-  letter-spacing:0.02em;
+.n-logo{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:17px;font-weight:600;color:var(--hi);
+  letter-spacing:.01em;white-space:nowrap;
 }
-.nav-logo b{color:var(--accent);font-weight:600;}
-.nav-links{display:flex;gap:2px;}
-.nav-links a{
-  font-size:12px;font-weight:400;letter-spacing:0.03em;
-  color:var(--text-3);
-  padding:5px 13px;border-radius:100px;
-  transition:color 0.2s,background 0.2s;
+.n-logo strong{color:var(--accent);}
+.n-links{display:flex;gap:2px;}
+.n-links a{
+  font-size:12px;font-weight:400;letter-spacing:.04em;
+  color:var(--lo);padding:5px 12px;border-radius:100px;
+  transition:color .18s,background .18s;
 }
-.nav-links a:hover{color:var(--text);background:var(--bg-hover);}
-.nav-links a.active{color:var(--accent);background:var(--accent-light);}
-.nav-actions{display:flex;align-items:center;gap:8px;}
+.n-links a:hover{color:var(--hi);background:var(--line);}
+.n-links a.on{color:var(--accent);background:var(--acc-dim);}
+.n-right{display:flex;align-items:center;gap:9px;}
 
-/* Theme toggle */
-.theme-btn{
-  width:34px;height:34px;border-radius:50%;
-  border:1px solid var(--border-md);
-  background:var(--bg-card);
-  cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:border-color 0.2s,background 0.2s,transform 0.2s;
-  flex-shrink:0;
+/* theme pill */
+.t-pill{
+  display:flex;border:1px solid var(--line-md);
+  border-radius:100px;overflow:hidden;background:var(--card);
+  box-shadow:var(--sh-sm);
 }
-.theme-btn:hover{border-color:var(--accent);background:var(--accent-light);transform:rotate(20deg);}
-.theme-btn svg{transition:opacity 0.2s;}
-.icon-moon{display:block;}
-.icon-sun{display:none;}
-[data-theme="light"] .icon-moon{display:none;}
-[data-theme="light"] .icon-sun{display:block;}
-
-.btn-cv{
-  font-size:12px;font-weight:500;letter-spacing:0.04em;
-  color:var(--accent);
-  border:1px solid var(--accent);
-  padding:6px 16px;border-radius:100px;
-  background:transparent;
-  cursor:pointer;font-family:'Inter',system-ui,sans-serif;
-  transition:background 0.2s,color 0.2s;
+.t-opt{
+  padding:5px 13px;font-size:11px;font-weight:500;letter-spacing:.04em;
+  cursor:pointer;border:none;background:transparent;
+  color:var(--lo);font-family:'Outfit',system-ui,sans-serif;
+  transition:background .2s,color .2s;
 }
-.btn-cv:hover{background:var(--accent);color:#fff;}
+.t-opt.active{background:var(--accent);color:#fff;}
 
-/* ─── LAYOUT ─── */
-.wrap{max-width:880px;margin:0 auto;padding-top:56px;}
+.btn-dl{
+  font-size:12px;font-weight:500;letter-spacing:.05em;
+  color:#fff;background:var(--accent);border:none;
+  padding:7px 18px;border-radius:100px;
+  cursor:pointer;font-family:'Outfit',system-ui,sans-serif;
+  box-shadow:0 2px 10px var(--acc-glo);
+  transition:opacity .2s,transform .15s,box-shadow .2s;
+}
+.btn-dl:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 16px var(--acc-glo);}
 
-/* ─── HERO ─── */
+/* ══════════════════════════
+   PAGE WRAP
+══════════════════════════ */
+.wrap{
+  max-width:900px;
+  margin:0 auto;
+  padding-top:59px;
+}
+
+/* ══════════════════════════
+   HERO
+══════════════════════════ */
 .hero{
-  padding:64px 48px 52px;
+  padding:60px 56px 52px;
+  border-bottom:1px solid var(--line);
   display:grid;
-  grid-template-columns:108px 1fr;
+  grid-template-columns:100px 1fr;
   gap:40px;
   align-items:start;
-  border-bottom:1px solid var(--border);
 }
-.photo-col{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.av-col{display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:6px;}
 .avatar{
-  width:96px;height:96px;border-radius:50%;
-  border:1.5px solid var(--accent);
-  background:var(--bg-card);
+  width:92px;height:92px;border-radius:50%;
+  border:2px solid var(--accent);
+  background:var(--card);
   display:flex;align-items:center;justify-content:center;
-  box-shadow:var(--shadow-card);
-  transition:box-shadow 0.3s,border-color 0.3s;
   overflow:hidden;
+  box-shadow:0 0 0 4px var(--acc-dim),var(--sh-md);
+  transition:box-shadow .3s;
 }
-.avatar:hover{box-shadow:0 0 0 5px var(--accent-glow);}
-.avatar-initials{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:30px;font-weight:500;
-  color:var(--accent);
+.avatar:hover{box-shadow:0 0 0 7px var(--acc-glo),var(--sh-md);}
+.av-init{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:28px;font-weight:600;color:var(--accent);
 }
-.photo-label{font-size:10px;color:var(--text-3);text-align:center;max-width:76px;line-height:1.5;}
+.av-hint{font-size:9px;color:var(--lo);text-align:center;max-width:76px;line-height:1.4;}
 
+.hero-body{}
 .hero-eyebrow{
-  font-size:10px;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--accent);font-weight:500;margin-bottom:10px;
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:10px;
 }
 .hero-name{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:52px;line-height:0.96;
-  color:var(--text);margin-bottom:8px;
-  font-weight:500;
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:52px;line-height:.96;font-weight:600;
+  color:var(--hi);margin-bottom:10px;
 }
 .hero-name em{font-style:italic;color:var(--accent);}
-.hero-role{
-  font-size:13px;color:var(--text-2);
-  margin-bottom:22px;letter-spacing:0.01em;
+.hero-tagline{
+  font-size:14px;color:var(--mid);font-weight:300;
+  letter-spacing:.01em;margin-bottom:24px;
 }
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
-.contact-rows{display:flex;flex-direction:column;gap:6px;}
-.contact-rows a,.contact-rows span{
-  font-size:12px;color:var(--text-2);
-  display:flex;align-items:center;gap:8px;
-  transition:color 0.2s;
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:28px;margin-bottom:22px;
 }
-.contact-rows a:hover{color:var(--accent);}
-.dot{width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+.contact-col{display:flex;flex-direction:column;gap:7px;}
+.c-row{
+  display:flex;align-items:center;gap:9px;
+  font-size:12px;color:var(--mid);
+  transition:color .18s;
+}
+a.c-row:hover{color:var(--accent);}
+.c-row svg{flex-shrink:0;opacity:.55;}
+a.c-row:hover svg{opacity:1;}
 .hero-summary{
-  font-size:13px;color:var(--text-2);line-height:1.78;
-  border-left:1.5px solid var(--accent);
+  font-size:13px;color:var(--mid);line-height:1.8;
+  border-left:2px solid var(--accent);
   padding-left:16px;
 }
-.hero-pills{display:flex;gap:6px;margin-top:20px;flex-wrap:wrap;}
-.pill{
+.hero-pills{display:flex;gap:6px;flex-wrap:wrap;}
+.hpill{
   font-size:11px;padding:3px 11px;border-radius:100px;
-  border:1px solid var(--border-md);color:var(--text-3);
-  transition:border-color 0.2s,color 0.2s;
-  letter-spacing:0.02em;
+  border:1px solid var(--line-md);color:var(--lo);
+  letter-spacing:.02em;
+  transition:border-color .18s,color .18s;
 }
-.pill:hover{border-color:var(--accent);color:var(--accent);}
+.hpill:hover{border-color:var(--accent);color:var(--accent);}
 
-/* ─── SECTION ─── */
-.section{padding:40px 48px 0;}
-.section:last-child{padding-bottom:72px;}
-.sec-head{
-  display:flex;align-items:center;gap:16px;
-  margin-bottom:22px;
-  cursor:pointer;user-select:none;
+/* ══════════════════════════
+   SECTIONS
+══════════════════════════ */
+.sec{
+  padding:44px 56px 0;
+  border-bottom:1px solid var(--line);
 }
-.sec-head:hover .sec-label{opacity:1;}
-.sec-label{
-  font-size:10px;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--accent);font-weight:500;white-space:nowrap;
-  opacity:0.85;transition:opacity 0.2s;
-}
-.sec-rule{flex:1;height:1px;background:var(--border);}
-.sec-btn{
-  width:20px;height:20px;border-radius:50%;
-  border:1px solid var(--border-md);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-  transition:border-color 0.2s,background 0.2s;
-}
-.sec-head:hover .sec-btn{border-color:var(--accent);background:var(--accent-light);}
-.sec-btn svg{transition:transform 0.32s cubic-bezier(.4,0,.2,1);}
-.sec-btn.open svg{transform:rotate(180deg);}
-.sec-body{overflow:hidden;transition:max-height 0.42s cubic-bezier(.4,0,.2,1),opacity 0.3s;}
-.sec-body.shut{max-height:0!important;opacity:0;pointer-events:none;}
+.sec:last-child{border-bottom:none;padding-bottom:64px;}
 
-/* ─── SKILLS ─── */
-.skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
-.skill-card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:10px;padding:16px 18px;
-  box-shadow:var(--shadow-card);
-  transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s;
+.sec-hd{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:26px;cursor:pointer;user-select:none;
 }
-.skill-card:hover{border-color:var(--border-md);transform:translateY(-2px);box-shadow:var(--shadow-hover);}
-.skill-cat{
-  font-size:10px;letter-spacing:0.11em;text-transform:uppercase;
-  color:var(--text-3);margin-bottom:10px;font-weight:500;
+.sec-hd:hover .sec-lbl{opacity:1;}
+.sec-lbl{
+  font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);opacity:.75;white-space:nowrap;
+  transition:opacity .18s;
 }
-.tags{display:flex;flex-wrap:wrap;gap:5px;}
-.tag{font-size:11px;padding:3px 10px;border-radius:100px;font-weight:500;letter-spacing:0.01em;}
-.t-acc{background:var(--accent-light);color:var(--accent);}
-.t-teal{background:var(--teal-light);color:var(--teal);}
-.t-neu{background:var(--bg-hover);color:var(--text-2);}
+.sec-rule{flex:1;height:1px;background:var(--line);}
+.sec-tog{
+  width:22px;height:22px;border-radius:50%;
+  border:1px solid var(--line-md);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:border-color .18s,background .18s;
+}
+.sec-hd:hover .sec-tog{border-color:var(--accent);background:var(--acc-dim);}
+.sec-tog svg{transition:transform .3s cubic-bezier(.4,0,.2,1);}
+.sec-tog.op svg{transform:rotate(180deg);}
+.sec-body{overflow:hidden;transition:max-height .42s cubic-bezier(.4,0,.2,1),opacity .28s;}
+.sec-body.cl{max-height:0!important;opacity:0;pointer-events:none;}
 
-/* ─── TIMELINE ─── */
-.timeline{display:flex;flex-direction:column;}
-.tl-row{
+/* ══════════════════════════
+   SKILLS
+══════════════════════════ */
+.sk-legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
+.sk-li{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mid);}
+.sk-dot{width:8px;height:8px;border-radius:50%;}
+
+.sk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.sk-card{
+  border-radius:14px;padding:20px 22px;
+  border-width:1px;border-style:solid;
+  transition:transform .24s,box-shadow .24s;
+}
+.sk-card:hover{transform:translateY(-3px);box-shadow:var(--sh-lg);}
+.s1{background:var(--c1d);border-color:rgba(124,58,237,.24);}
+.s2{background:var(--c2d);border-color:rgba(2,132,199,.22);}
+.s3{background:var(--c3d);border-color:rgba(5,150,105,.22);}
+.s4{background:var(--c4d);border-color:rgba(217,119,6,.22);}
+
+.sk-head{display:flex;align-items:center;gap:9px;margin-bottom:13px;}
+.sk-ico{
+  width:28px;height:28px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.s1 .sk-ico{background:rgba(124,58,237,.18);}
+.s2 .sk-ico{background:rgba(2,132,199,.18);}
+.s3 .sk-ico{background:rgba(5,150,105,.18);}
+.s4 .sk-ico{background:rgba(217,119,6,.18);}
+.sk-ttl{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;}
+.s1 .sk-ttl{color:var(--c1);} .s2 .sk-ttl{color:var(--c2);}
+.s3 .sk-ttl{color:var(--c3);} .s4 .sk-ttl{color:var(--c4);}
+
+.sk-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.sk-tag{
+  font-size:11px;padding:3px 10px;border-radius:100px;
+  font-weight:500;border:1px solid transparent;
+  transition:opacity .18s;
+}
+.sk-tag:hover{opacity:.75;}
+.s1 .sk-tag{background:var(--c1b);color:var(--c1);border-color:rgba(124,58,237,.22);}
+.s2 .sk-tag{background:var(--c2b);color:var(--c2);border-color:rgba(2,132,199,.20);}
+.s3 .sk-tag{background:var(--c3b);color:var(--c3);border-color:rgba(5,150,105,.20);}
+.s4 .sk-tag{background:var(--c4b);color:var(--c4);border-color:rgba(217,119,6,.20);}
+
+/* ══════════════════════════
+   TIMELINE
+══════════════════════════ */
+.tl{display:flex;flex-direction:column;}
+.tl-item{
   display:grid;grid-template-columns:130px 1fr;
-  gap:24px;padding:22px 0;
-  border-bottom:1px solid var(--border);
+  gap:22px;padding:22px 0;
+  border-bottom:1px solid var(--line);
 }
-.tl-row:last-child{border-bottom:none;}
-.tl-meta{padding-top:2px;}
-.tl-dates{font-size:11px;color:var(--text-3);line-height:1.6;}
-.tl-org{font-size:11px;color:var(--text-2);font-weight:500;margin-top:4px;line-height:1.4;}
+.tl-item:last-child{border-bottom:none;}
+.tl-side{padding-top:3px;}
+.tl-yr{font-size:11px;color:var(--lo);line-height:1.55;}
+.tl-org{font-size:11px;color:var(--mid);font-weight:500;margin-top:4px;line-height:1.4;}
+.tl-badge{
+  display:inline-block;margin-top:7px;
+  font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:2px 7px;border-radius:4px;
+}
 .tl-body{cursor:pointer;}
-.tl-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
-.tl-title{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:20px;font-weight:500;
-  color:var(--text);line-height:1.15;margin-bottom:3px;
-  transition:color 0.2s;
+.tl-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+.tl-role{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:20px;font-weight:600;
+  color:var(--hi);line-height:1.2;margin-bottom:3px;
+  transition:color .18s;
 }
-.tl-body:hover .tl-title{color:var(--accent);}
-.tl-place{font-size:11px;color:var(--text-3);margin-bottom:10px;letter-spacing:0.01em;}
-.tl-chevron{flex-shrink:0;margin-top:4px;transition:transform 0.3s cubic-bezier(.4,0,.2,1);}
-.tl-chevron.open{transform:rotate(180deg);}
-.tl-detail{overflow:hidden;transition:max-height 0.35s cubic-bezier(.4,0,.2,1),opacity 0.25s;}
-.tl-detail.shut{max-height:0!important;opacity:0;}
-.tl-pts{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.tl-body:hover .tl-role{color:var(--accent);}
+.tl-place{font-size:11px;color:var(--lo);margin-bottom:10px;}
+.tl-chev{flex-shrink:0;margin-top:6px;transition:transform .28s cubic-bezier(.4,0,.2,1);}
+.tl-chev.op{transform:rotate(180deg);}
+.tl-detail{overflow:hidden;transition:max-height .32s cubic-bezier(.4,0,.2,1),opacity .22s;}
+.tl-detail.cl{max-height:0!important;opacity:0;}
+.tl-pts{list-style:none;display:flex;flex-direction:column;gap:5px;}
 .tl-pts li{
-  font-size:12px;color:var(--text-2);
-  padding-left:14px;position:relative;line-height:1.65;
+  font-size:13px;color:var(--mid);
+  padding-left:16px;position:relative;line-height:1.7;
 }
-.tl-pts li::before{content:'–';position:absolute;left:0;color:var(--accent);}
-.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px;}
+.tl-pts li::before{
+  content:'▸';position:absolute;left:0;
+  color:var(--accent);font-size:9px;top:5px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:11px;}
 .chip{
-  font-size:10px;letter-spacing:0.02em;
-  background:var(--bg-hover);color:var(--text-3);
-  padding:2px 8px;border-radius:4px;
-  transition:background 0.2s,color 0.2s;
+  font-size:10px;letter-spacing:.02em;
+  background:var(--line);color:var(--lo);
+  padding:2px 9px;border-radius:5px;
+  transition:background .18s,color .18s;
 }
-.chip:hover{background:var(--accent-light);color:var(--accent);}
+.chip:hover{background:var(--acc-dim);color:var(--accent);}
 
-/* ─── PROJECTS ─── */
+/* ══════════════════════════
+   PROJECTS
+══════════════════════════ */
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
 .proj-card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:12px;overflow:hidden;
-  box-shadow:var(--shadow-card);
-  transition:border-color 0.25s,transform 0.28s,box-shadow 0.28s;
+  background:var(--card);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;
+  box-shadow:var(--sh-sm);
+  transition:border-color .24s,transform .28s,box-shadow .28s;
 }
-.proj-card:hover{border-color:var(--border-md);transform:translateY(-4px);box-shadow:var(--shadow-hover);}
+.proj-card:hover{border-color:var(--line-md);transform:translateY(-4px);box-shadow:var(--sh-lg);}
 .proj-thumb{
-  height:128px;display:flex;align-items:center;
-  justify-content:center;font-size:42px;position:relative;
+  height:124px;display:flex;align-items:center;
+  justify-content:center;font-size:40px;position:relative;
 }
-.th-av{background:var(--thumb-av);}
-.th-vr{background:var(--thumb-vr);}
-.th-cad{background:var(--thumb-cad);}
-.th-av2{background:var(--thumb-av2);}
+.pt1{background:linear-gradient(135deg,#16102A,#28194A);}
+.pt2{background:linear-gradient(135deg,#0B1C16,#143626);}
+.pt3{background:linear-gradient(135deg,#1C1309,#2E2010);}
+.pt4{background:linear-gradient(135deg,#0C1826,#12263E);}
+[data-theme="light"] .pt1{background:linear-gradient(135deg,#E0D8F4,#CCC0EC);}
+[data-theme="light"] .pt2{background:linear-gradient(135deg,#CEEAD8,#B8DECC);}
+[data-theme="light"] .pt3{background:linear-gradient(135deg,#FCEADC,#F4D8C0);}
+[data-theme="light"] .pt4{background:linear-gradient(135deg,#CCE6F8,#B8DAEE);}
 .proj-badge{
   position:absolute;top:10px;right:10px;
   font-size:10px;padding:3px 9px;border-radius:100px;font-weight:500;
-  letter-spacing:0.03em;
 }
-.pb-acc{background:var(--accent-light);color:var(--accent);}
-.pb-teal{background:var(--teal-light);color:var(--teal);}
-.proj-body{padding:16px 18px;}
-.proj-title{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:17px;font-weight:500;
-  color:var(--text);margin-bottom:6px;line-height:1.25;
+.pb-a{background:var(--acc-dim);color:var(--accent);}
+.pb-g{background:rgba(5,150,105,.14);color:var(--c3);}
+.proj-body{padding:16px 20px;}
+.proj-ttl{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:16px;font-weight:600;
+  color:var(--hi);margin-bottom:6px;line-height:1.25;
 }
-.proj-desc{font-size:12px;color:var(--text-2);line-height:1.65;margin-bottom:10px;}
+.proj-desc{font-size:12px;color:var(--mid);line-height:1.65;margin-bottom:10px;}
 
-/* ─── PUBLICATIONS ─── */
+/* ══════════════════════════
+   PUBLICATIONS
+══════════════════════════ */
 .pub-list{display:flex;flex-direction:column;gap:10px;}
-.pub-card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:10px;padding:14px 18px;
-  display:flex;gap:16px;align-items:flex-start;
-  box-shadow:var(--shadow-card);
-  transition:border-color 0.22s,transform 0.22s;
+.pub-item{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:16px 20px;
+  display:grid;grid-template-columns:70px 1fr;gap:16px;
+  box-shadow:var(--sh-sm);
+  transition:border-color .22s,transform .22s;
 }
-.pub-card:hover{border-color:var(--border-md);transform:translateX(4px);}
+.pub-item:hover{border-color:var(--line-md);transform:translateX(5px);}
+.pub-left{display:flex;flex-direction:column;gap:6px;}
+.pub-ico{
+  width:30px;height:30px;border-radius:8px;
+  background:var(--acc-dim);
+  display:flex;align-items:center;justify-content:center;
+}
 .pub-venue{
-  font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--accent);font-weight:500;white-space:nowrap;
-  padding-top:2px;min-width:58px;
+  font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);font-weight:700;line-height:1.4;
 }
-.pub-title{font-size:13px;color:var(--text);line-height:1.55;}
+.pub-ttl{font-size:13px;color:var(--hi);line-height:1.55;font-weight:400;}
+.pub-meta{font-size:11px;color:var(--lo);margin-top:4px;}
 
-/* ─── CERTS ─── */
+/* ══════════════════════════
+   CERTIFICATIONS
+══════════════════════════ */
 .cert-list{display:flex;flex-direction:column;gap:10px;}
-.cert-card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:10px;padding:14px 18px;
+.cert-item{
+  background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:14px 20px;
   display:flex;align-items:center;gap:14px;
-  box-shadow:var(--shadow-card);
-  transition:border-color 0.22s,transform 0.22s;
+  box-shadow:var(--sh-sm);
+  transition:border-color .22s,transform .22s;
 }
-.cert-card:hover{border-color:var(--teal);transform:translateX(4px);}
-.cert-icon{
-  width:34px;height:34px;border-radius:8px;
-  background:var(--teal-light);
+.cert-item:hover{border-color:var(--c3);transform:translateX(4px);}
+.cert-ico{
+  width:36px;height:36px;border-radius:10px;
+  background:rgba(5,150,105,.13);
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
-.cert-name{font-size:13px;color:var(--text);line-height:1.45;}
-.cert-by{font-size:11px;color:var(--text-3);margin-top:2px;}
+.cert-nm{font-size:13px;color:var(--hi);line-height:1.4;}
+.cert-by{font-size:11px;color:var(--lo);margin-top:2px;}
 
-/* ─── EDUCATION ─── */
-.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+/* ══════════════════════════
+   EDUCATION
+══════════════════════════ */
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
 .edu-card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:10px;padding:16px 18px;
-  box-shadow:var(--shadow-card);
-  transition:border-color 0.25s,transform 0.25s;
+  background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:20px 18px;
+  box-shadow:var(--sh-sm);
+  position:relative;overflow:hidden;
+  transition:border-color .24s,transform .24s;
 }
-.edu-card:hover{border-color:var(--border-md);transform:translateY(-2px);}
+.edu-card:hover{border-color:var(--line-md);transform:translateY(-3px);}
+.edu-stripe{position:absolute;top:0;left:0;right:0;height:3px;}
+.edu-card:nth-child(1) .edu-stripe{background:var(--accent);}
+.edu-card:nth-child(2) .edu-stripe{background:var(--c1);}
+.edu-card:nth-child(3) .edu-stripe{background:var(--c3);}
 .edu-deg{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:16px;font-weight:500;
-  color:var(--text);line-height:1.25;margin-bottom:7px;
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:15px;font-weight:600;
+  color:var(--hi);line-height:1.25;margin-bottom:7px;margin-top:7px;
 }
-.edu-inst{font-size:11px;color:var(--text-2);font-weight:500;margin-bottom:3px;}
-.edu-yr{font-size:11px;color:var(--text-3);margin-bottom:10px;}
-.edu-note{
-  font-size:11px;color:var(--teal);
-  background:var(--teal-light);
-  padding:3px 9px;border-radius:100px;display:inline-block;
+.edu-inst{font-size:11px;color:var(--mid);font-weight:500;margin-bottom:3px;}
+.edu-yr{font-size:11px;color:var(--lo);margin-bottom:10px;}
+.edu-badge{
+  display:inline-block;font-size:10px;font-weight:500;
+  padding:3px 10px;border-radius:100px;
+  background:var(--gold-dim);color:var(--gold);
 }
 
-/* ─── LANGUAGES ─── */
-.lang-row{display:flex;gap:10px;}
+/* ══════════════════════════
+   LANGUAGES
+══════════════════════════ */
+.lang-row{display:flex;gap:12px;}
 .lang-card{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:10px;padding:14px 18px;flex:1;
+  background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:14px 20px;flex:1;
   display:flex;align-items:center;justify-content:space-between;
-  box-shadow:var(--shadow-card);
-  transition:border-color 0.2s,transform 0.2s;
+  box-shadow:var(--sh-sm);
+  transition:border-color .18s,transform .18s;
 }
-.lang-card:hover{border-color:var(--border-md);transform:translateY(-1px);}
-.lang-name{font-size:13px;font-weight:500;color:var(--text);}
-.lang-lvl{font-size:11px;color:var(--text-3);}
+.lang-card:hover{border-color:var(--line-md);transform:translateY(-1px);}
+.lang-nm{font-size:13px;font-weight:500;color:var(--hi);}
+.lang-lv{font-size:11px;color:var(--lo);}
 
-/* ─── CONTACT ─── */
-.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.contact-info{display:flex;flex-direction:column;gap:12px;}
-.info-label{
-  font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
-  color:var(--text-3);font-weight:500;margin-bottom:4px;
+/* ══════════════════════════
+   CONTACT
+══════════════════════════ */
+.contact-layout{display:grid;grid-template-columns:220px 1fr;gap:32px;}
+.contact-meta{display:flex;flex-direction:column;gap:18px;padding-top:4px;}
+.cm-group{display:flex;flex-direction:column;gap:4px;}
+.cm-lbl{
+  font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--lo);
 }
-.info-val{font-size:13px;color:var(--text);transition:color 0.2s;}
-.info-val:hover{color:var(--accent);}
-.contact-form{display:flex;flex-direction:column;gap:10px;}
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.f-field{display:flex;flex-direction:column;gap:4px;}
-.f-label{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);}
-.f-input,.f-area{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:8px;padding:10px 14px;
-  font-family:'Inter',system-ui,sans-serif;
-  font-size:13px;color:var(--text);
-  outline:none;width:100%;
-  transition:border-color 0.2s,box-shadow 0.2s,background 0.35s;
+.cm-val{font-size:13px;color:var(--hi);transition:color .18s;}
+a.cm-val:hover{color:var(--accent);}
+.cf{display:flex;flex-direction:column;gap:11px;}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.cf-field{display:flex;flex-direction:column;gap:5px;}
+.cf-lbl{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--lo);}
+.cf-in,.cf-ta{
+  background:var(--card);border:1px solid var(--line-md);
+  border-radius:8px;padding:10px 13px;
+  font-family:'Outfit',system-ui,sans-serif;font-size:13px;
+  color:var(--hi);outline:none;width:100%;
+  transition:border-color .2s,box-shadow .2s,background .3s;
 }
-.f-input::placeholder,.f-area::placeholder{color:var(--text-3);}
-.f-input:focus,.f-area:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light);}
-.f-area{height:90px;resize:none;line-height:1.6;}
-.f-submit{
+.cf-in::placeholder,.cf-ta::placeholder{color:var(--lo);}
+.cf-in:focus,.cf-ta:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--acc-dim);}
+.cf-ta{height:90px;resize:none;line-height:1.6;}
+.cf-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.cf-btn{
   background:var(--accent);color:#fff;border:none;
-  padding:11px 28px;border-radius:100px;align-self:flex-start;
-  font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:500;
-  cursor:pointer;letter-spacing:0.04em;
-  transition:opacity 0.2s,transform 0.15s,box-shadow 0.2s;
+  padding:10px 28px;border-radius:100px;
+  font-family:'Outfit',system-ui,sans-serif;font-size:13px;font-weight:500;
+  cursor:pointer;letter-spacing:.04em;
+  transition:opacity .18s,transform .14s,box-shadow .18s;
 }
-.f-submit:hover{opacity:0.9;transform:translateY(-1px);box-shadow:0 4px 14px var(--accent-glow);}
-.f-note{font-size:11px;color:var(--text-3);margin-top:2px;}
-.f-ok{display:none;font-size:13px;color:var(--teal);padding:8px 0;}
+.cf-btn:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 16px var(--acc-glo);}
+.cf-note{font-size:11px;color:var(--lo);}
+.cf-ok{display:none;font-size:12px;color:var(--c3);padding:4px 0;}
 
-/* ─── CV MODAL ─── */
+/* ══════════════════════════
+   CV MODAL
+══════════════════════════ */
 .overlay{
-  display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,0.65);
-  backdrop-filter:blur(6px);
-  z-index:300;align-items:center;justify-content:center;
+  display:none;position:fixed;inset:0;z-index:400;
+  background:rgba(0,0,0,.68);backdrop-filter:blur(8px);
+  align-items:center;justify-content:center;
 }
 .overlay.on{display:flex;}
 .modal{
-  background:var(--bg-raised);border:1px solid var(--border-md);
-  border-radius:16px;padding:32px 36px;
-  max-width:420px;width:92%;position:relative;
-  box-shadow:0 24px 64px rgba(0,0,0,0.4);
-  transition:background 0.35s;
+  background:var(--surface);border:1px solid var(--line-md);
+  border-radius:18px;padding:34px 38px;
+  max-width:430px;width:92%;position:relative;
+  box-shadow:0 28px 72px rgba(0,0,0,.45);
+  transition:background .3s;
 }
 .modal-x{
   position:absolute;top:16px;right:18px;
-  background:none;border:none;
-  color:var(--text-3);font-size:18px;cursor:pointer;
-  line-height:1;transition:color 0.2s;font-family:'Inter',system-ui,sans-serif;
+  background:none;border:none;color:var(--lo);
+  font-size:17px;cursor:pointer;line-height:1;
+  font-family:'Outfit',system-ui,sans-serif;
+  transition:color .18s;
 }
-.modal-x:hover{color:var(--text);}
-.modal-title{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:26px;font-weight:500;color:var(--text);margin-bottom:6px;
+.modal-x:hover{color:var(--hi);}
+.modal-ttl{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:26px;font-weight:600;color:var(--hi);margin-bottom:6px;
 }
-.modal-sub{font-size:12px;color:var(--text-2);margin-bottom:22px;line-height:1.65;}
-.modal-actions{display:flex;flex-direction:column;gap:10px;}
+.modal-sub{font-size:12px;color:var(--mid);margin-bottom:22px;line-height:1.65;}
+.modal-rows{display:flex;flex-direction:column;gap:10px;}
 .modal-row{
-  padding:12px 16px;border-radius:10px;
-  border:1px solid var(--border-md);background:var(--bg-hover);
-  color:var(--text-2);
+  padding:13px 16px;border-radius:10px;
+  border:1px solid var(--line-md);background:var(--card);
+  color:var(--mid);
   display:flex;align-items:center;gap:12px;
-  font-family:'Inter',system-ui,sans-serif;font-size:13px;font-weight:500;
-  cursor:pointer;text-decoration:none;
-  transition:border-color 0.2s,color 0.2s,background 0.2s;
+  font-family:'Outfit',system-ui,sans-serif;font-size:13px;font-weight:500;
+  text-decoration:none;
+  transition:border-color .2s,color .2s,background .2s;
 }
-.modal-row:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light);}
+.modal-row:hover{border-color:var(--accent);color:var(--accent);background:var(--acc-dim);}
 
-/* ─── FOOTER ─── */
+/* ══════════════════════════
+   FOOTER
+══════════════════════════ */
 footer{
-  border-top:1px solid var(--border);
-  padding:20px 48px;
+  max-width:900px;margin:0 auto;
+  border-top:1px solid var(--line);
+  padding:20px 56px;
   display:flex;align-items:center;justify-content:space-between;
-  max-width:880px;margin:0 auto;
+  font-size:11px;color:var(--lo);
 }
-.footer-name{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:15px;font-weight:500;color:var(--text-3);
+.ft-logo{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:14px;font-weight:600;color:var(--lo);
 }
-.footer-note{font-size:11px;color:var(--text-3);}
 
-/* ─── FADE IN ─── */
-.fi{opacity:0;transform:translateY(16px);transition:opacity 0.52s ease,transform 0.52s ease;}
+/* ══════════════════════════
+   FADE IN
+══════════════════════════ */
+.fi{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease;}
 .fi.in{opacity:1;transform:translateY(0);}
 
-/* ─── RESPONSIVE ─── */
-@media(max-width:660px){
+/* ══════════════════════════
+   RESPONSIVE
+══════════════════════════ */
+@media(max-width:700px){
   nav{padding:0 20px;}
-  .nav-links{display:none;}
-  .hero{grid-template-columns:1fr;padding:40px 20px 32px;gap:24px;}
-  .photo-col{flex-direction:row;align-items:center;}
-  .section{padding:30px 20px 0;}
-  .skill-grid,.edu-grid,.proj-grid{grid-template-columns:1fr;}
-  .tl-row{grid-template-columns:1fr;gap:6px;}
-  .tl-meta{display:flex;gap:12px;align-items:center;}
-  .lang-row{flex-direction:column;}
+  .n-links{display:none;}
+  .hero{grid-template-columns:1fr;padding:36px 20px 28px;gap:20px;}
+  .av-col{flex-direction:row;align-items:flex-start;}
   .hero-grid{grid-template-columns:1fr;gap:16px;}
   .hero-name{font-size:38px;}
-  .contact-wrap{grid-template-columns:1fr;}
-  .f-row{grid-template-columns:1fr;}
-  footer{flex-direction:column;gap:8px;text-align:center;}
+  .sec{padding:32px 20px 0;}
+  .sk-grid,.proj-grid,.edu-grid{grid-template-columns:1fr;}
+  .tl-item{grid-template-columns:1fr;gap:6px;}
+  .tl-side{display:flex;gap:10px;align-items:center;}
+  .lang-row{flex-direction:column;}
+  .contact-layout{grid-template-columns:1fr;}
+  .cf-row{grid-template-columns:1fr;}
+  footer{padding:18px 20px;flex-direction:column;gap:6px;text-align:center;}
 }
 </style>
 </head>
 <body>
 
-<div class="progress" id="prog"></div>
+<div id="prog"></div>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Tran&nbsp;Thi&nbsp;<b>Thanh&nbsp;Hoa</b></div>
-  <div class="nav-links">
+  <div class="n-logo">Tran Thi Thanh Hoa</strong></div>
+  <div class="n-links">
     <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
@@ -514,20 +607,12 @@ footer{
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
   </div>
-  <div class="nav-actions">
-    <!-- Theme toggle -->
-    <button class="theme-btn" id="themeBtn" aria-label="Toggle theme" title="Toggle light / dark">
-      <!-- Moon (dark mode) -->
-      <svg class="icon-moon" width="15" height="15" viewBox="0 0 15 15" fill="none">
-        <path d="M13 9.5A5.5 5.5 0 0 1 5.5 2a.5.5 0 0 0-.6.65A6 6 0 1 0 12.35 10.1a.5.5 0 0 0-.65-.6Z" fill="currentColor" opacity="0.7"/>
-      </svg>
-      <!-- Sun (light mode) -->
-      <svg class="icon-sun" width="15" height="15" viewBox="0 0 15 15" fill="none">
-        <circle cx="7.5" cy="7.5" r="2.5" fill="currentColor" opacity="0.85"/>
-        <path d="M7.5 1v1.5M7.5 12.5V14M1 7.5h1.5M12.5 7.5H14M3.05 3.05l1.06 1.06M10.9 10.9l1.05 1.06M10.9 4.11l1.05-1.06M3.05 11.95l1.06-1.06" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.75"/>
-      </svg>
-    </button>
-    <button class="btn-cv" onclick="document.getElementById('cvModal').classList.add('on')">Download CV</button>
+  <div class="n-right">
+    <div class="t-pill">
+      <button class="t-opt" id="tDark"  onclick="setTheme('dark')">Dark</button>
+      <button class="t-opt" id="tLight" onclick="setTheme('light')">Light</button>
+    </div>
+    <button class="btn-dl" onclick="document.getElementById('cvModal').classList.add('on')">Download CV</button>
   </div>
 </nav>
 
@@ -535,14 +620,14 @@ footer{
 <div class="overlay" id="cvModal" onclick="if(event.target===this)this.classList.remove('on')">
   <div class="modal">
     <button class="modal-x" onclick="document.getElementById('cvModal').classList.remove('on')">&#x2715;</button>
-    <div class="modal-title">Download CV</div>
-    <p class="modal-sub">Choose your preferred format. Update the PDF link once you host your file.</p>
-    <div class="modal-actions">
+    <div class="modal-ttl">Download CV</div>
+    <p class="modal-sub">Choose your format. Link your PDF once it's hosted.</p>
+    <div class="modal-rows">
       <a href="portfolio_tran_thi_thanh_hoa.html" download class="modal-row">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 8h5M8 5.5v5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
         Download HTML portfolio
       </a>
-      <a href="#" class="modal-row" onclick="alert('Replace href=\'#\' with your PDF URL to enable this.')">
+      <a href="#" class="modal-row" onclick="alert('Replace href with your PDF URL to enable.')">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="1" width="9" height="14" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M8 1.5v4h5" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M4.5 8.5h7M4.5 11h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
         Download PDF (link your file)
       </a>
@@ -552,100 +637,138 @@ footer{
 
 <div class="wrap">
 
-<!-- ── HERO ── -->
-<header class="hero">
-  <div class="photo-col">
-    <div class="avatar"><span class="avatar-initials">TH</span></div>
-    <span class="photo-label">Replace with your photo</span>
+<!-- ══ HERO ══ -->
+<header class="hero fi">
+  <div class="av-col">
+    <div class="avatar"><span class="av-init">TH</span></div>
+    <span class="av-hint">Replace with your photo</span>
   </div>
-  <div>
-    <div class="hero-eyebrow">Human Factors &amp; HMI Engineer</div>
+  <div class="hero-body">
+    <div class="hero-eyebrow">Human Factors &amp; HMI Engineer · PhD Researcher</div>
     <h1 class="hero-name">Tran&nbsp;Thi<br><em>Thanh&nbsp;Hoa</em></h1>
-    <p class="hero-role">PhD · Human–Machine Interaction · VR Simulation · Autonomous Systems</p>
+    <p class="hero-tagline">PhD · Human–Machine Interaction · VR Simulation · Autonomous Systems</p>
     <div class="hero-grid">
-      <div class="contact-rows">
-        <a href="mailto:tthithanhhoa@gmail.com"><span class="dot"></span>tthithanhhoa@gmail.com</a>
-        <a href="tel:+33664337524"><span class="dot"></span>+33 06 64 33 75 24</a>
-        <a href="#"><span class="dot"></span>LinkedIn</a>
-        <span><span class="dot"></span>Rennes, France</span>
+      <div class="contact-col">
+        <a class="c-row" href="mailto:tthithanhhoa@gmail.com">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="2.5" width="11" height="8" rx="1.5" stroke="currentColor" stroke-width="1.1"/><path d="M1 4l5.5 3.5L12 4" stroke="currentColor" stroke-width="1.1"/></svg>
+          tthithanhhoa@gmail.com
+        </a>
+        <a class="c-row" href="tel:+33664337524">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 2.5C2 2 2.5 1.5 3 1.5l1.5.5.5 2-1 1c.5 1 1.5 2 2.5 2.5l1-1 2 .5.5 1.5c0 .5-.5 1-1 1C5 11.5 1.5 8 2 2.5Z" stroke="currentColor" stroke-width="1.1"/></svg>
+          +33 06 64 33 75 24
+        </a>
+        <a class="c-row" href="#">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="1" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.1"/><path d="M4.5 9.5V5.5M4.5 3.5v.5M6.5 9.5V7c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5v2.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+          LinkedIn profile
+        </a>
+        <span class="c-row">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="5.5" r="2" stroke="currentColor" stroke-width="1.1"/><path d="M6.5 1C4 1 2 3 2 5.5c0 3.5 4.5 6.5 4.5 6.5S11 9 11 5.5C11 3 9 1 6.5 1Z" stroke="currentColor" stroke-width="1.1"/></svg>
+          Rennes, France
+        </span>
       </div>
-      <p class="hero-summary">PhD researcher in HMI with expertise in usability studies, VR simulation, and eye-tracking analysis. Published at IEEE VR, ISMAR &amp; CAD. Fluent in English and French.</p>
+      <p class="hero-summary">PhD researcher specialising in how users interact with complex technical systems. Expert in usability studies, VR-based prototyping, and eye-tracking analysis. Published at IEEE VR, ISMAR &amp; CAD. Fluent in English and French.</p>
     </div>
     <div class="hero-pills">
-      <span class="pill">3+ years research</span>
-      <span class="pill">3 publications</span>
-      <span class="pill">IEEE VR · ISMAR · CAD</span>
-      <span class="pill">France–Australia Cotutelle</span>
-      <span class="pill">Eiffel Excellence Scholar</span>
+      <span class="hpill">3+ years research</span>
+      <span class="hpill">3 publications</span>
+      <span class="hpill">IEEE VR · ISMAR · CAD</span>
+      <span class="hpill">France–Australia Cotutelle</span>
+      <span class="hpill">Eiffel Excellence Scholar</span>
     </div>
   </div>
 </header>
 
-<!-- ── SKILLS ── -->
-<section class="section fi" id="skills">
-  <div class="sec-head" onclick="tog('sk-b','sk-t')">
-    <span class="sec-label">Skills</span><span class="sec-rule"></span>
-    <div class="sec-btn open" id="sk-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<!-- ══ SKILLS ══ -->
+<section class="sec fi" id="skills">
+  <div class="sec-hd" onclick="tog('sk-b','sk-t')">
+    <span class="sec-lbl">Skills</span><span class="sec-rule"></span>
+    <div class="sec-tog op" id="sk-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </div>
-  <div class="sec-body" id="sk-b" style="max-height:600px;">
-    <div class="skill-grid">
-      <div class="skill-card">
-        <div class="skill-cat">Human Factors &amp; Ergonomics</div>
-        <div class="tags"><span class="tag t-acc">HMI Analysis</span><span class="tag t-acc">Usability Testing</span><span class="tag t-acc">Eye-Tracking (Tobii)</span><span class="tag t-acc">User Interviews</span><span class="tag t-acc">Experimental Design</span></div>
+  <div class="sec-body" id="sk-b" style="max-height:700px;">
+    <div class="sk-legend">
+      <span class="sk-li"><span class="sk-dot" style="background:var(--c1)"></span>Human Factors</span>
+      <span class="sk-li"><span class="sk-dot" style="background:var(--c2)"></span>3D / VR</span>
+      <span class="sk-li"><span class="sk-dot" style="background:var(--c3)"></span>Programming</span>
+      <span class="sk-li"><span class="sk-dot" style="background:var(--c4)"></span>Tools</span>
+    </div>
+    <div class="sk-grid">
+      <div class="sk-card s1">
+        <div class="sk-head">
+          <div class="sk-ico"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="var(--c1)" stroke-width="1.2"/><path d="M2 12c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="var(--c1)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <span class="sk-ttl">Human Factors &amp; Ergonomics</span>
+        </div>
+        <div class="sk-tags"><span class="sk-tag">HMI Analysis</span><span class="sk-tag">Usability Testing</span><span class="sk-tag">Eye-Tracking (Tobii)</span><span class="sk-tag">User Interviews</span><span class="sk-tag">Experimental Design</span></div>
       </div>
-      <div class="skill-card">
-        <div class="skill-cat">3D Simulation &amp; Prototyping</div>
-        <div class="tags"><span class="tag t-teal">VR / AR</span><span class="tag t-teal">Unity</span><span class="tag t-teal">Blender</span><span class="tag t-teal">SolidWorks</span><span class="tag t-teal">Creo</span></div>
+      <div class="sk-card s2">
+        <div class="sk-head">
+          <div class="sk-ico"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="7" rx="1.5" stroke="var(--c2)" stroke-width="1.2"/><path d="M5 10v1.5M9 10v1.5M4 11.5h6" stroke="var(--c2)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <span class="sk-ttl">3D Simulation &amp; Prototyping</span>
+        </div>
+        <div class="sk-tags"><span class="sk-tag">VR / AR</span><span class="sk-tag">Unity</span><span class="sk-tag">Blender</span><span class="sk-tag">SolidWorks</span><span class="sk-tag">Creo</span></div>
       </div>
-      <div class="skill-card">
-        <div class="skill-cat">Programming &amp; Data Analysis</div>
-        <div class="tags"><span class="tag t-neu">Python</span><span class="tag t-neu">C++</span><span class="tag t-neu">C#</span><span class="tag t-neu">MATLAB</span><span class="tag t-neu">R</span><span class="tag t-neu">GitHub</span></div>
+      <div class="sk-card s3">
+        <div class="sk-head">
+          <div class="sk-ico"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 5l-2 2 2 2M10 5l2 2-2 2M7 3l-1.5 8" stroke="var(--c3)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span class="sk-ttl">Programming &amp; Data Analysis</span>
+        </div>
+        <div class="sk-tags"><span class="sk-tag">Python</span><span class="sk-tag">C++</span><span class="sk-tag">C#</span><span class="sk-tag">MATLAB</span><span class="sk-tag">R</span><span class="sk-tag">GitHub</span></div>
       </div>
-      <div class="skill-card">
-        <div class="skill-cat">Collaboration &amp; Tools</div>
-        <div class="tags"><span class="tag t-neu">Miro</span><span class="tag t-neu">Redmine</span><span class="tag t-neu">Visual Studio</span><span class="tag t-neu">Git</span></div>
+      <div class="sk-card s4">
+        <div class="sk-head">
+          <div class="sk-ico"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="4" width="11" height="6" rx="1.5" stroke="var(--c4)" stroke-width="1.2"/><path d="M4.5 4V3a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1M5 7h4" stroke="var(--c4)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <span class="sk-ttl">Collaboration &amp; Tools</span>
+        </div>
+        <div class="sk-tags"><span class="sk-tag">Miro</span><span class="sk-tag">Redmine</span><span class="sk-tag">Visual Studio</span><span class="sk-tag">Git</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── EXPERIENCE ── -->
-<section class="section fi" id="experience">
-  <div class="sec-head" onclick="tog('ex-b','ex-t')">
-    <span class="sec-label">Experience</span><span class="sec-rule"></span>
-    <div class="sec-btn open" id="ex-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<!-- ══ EXPERIENCE ══ -->
+<section class="sec fi" id="experience">
+  <div class="sec-hd" onclick="tog('ex-b','ex-t')">
+    <span class="sec-lbl">Experience</span><span class="sec-rule"></span>
+    <div class="sec-tog op" id="ex-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </div>
   <div class="sec-body" id="ex-b" style="max-height:1400px;">
-    <div class="timeline">
+    <div class="tl">
 
-      <div class="tl-row">
-        <div class="tl-meta"><div class="tl-dates">09/2022 – 10/2025</div><div class="tl-org">IMT Atlantique &amp;<br>Adelaide University</div></div>
-        <div class="tl-body" onclick="dt('ex1','ac1')">
+      <div class="tl-item">
+        <div class="tl-side">
+          <div class="tl-yr">09/2022 – 10/2025</div>
+          <div class="tl-org">IMT Atlantique &amp;<br>Adelaide University</div>
+          <span class="tl-badge" style="background:var(--acc-dim);color:var(--accent);">Cotutelle</span>
+        </div>
+        <div class="tl-body" onclick="dtog('d1','a1')">
           <div class="tl-top">
-            <div><div class="tl-title">PhD Researcher — HMI</div><div class="tl-place">Brest, France &amp; Australia · Cotutelle</div></div>
-            <svg class="tl-chevron open" id="ac1" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="var(--text-3)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><div class="tl-role">PhD Researcher — HMI</div><div class="tl-place">Brest, France &amp; Adelaide, Australia</div></div>
+            <svg class="tl-chev op" id="a1" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="var(--lo)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="tl-detail" id="ex1" style="max-height:300px;">
+          <div class="tl-detail" id="d1" style="max-height:300px;">
             <ul class="tl-pts">
               <li>Researched human interaction with autonomous vehicle systems in simulated environments.</li>
               <li>Applied qualitative &amp; quantitative methods: interviews, surveys, and Tobii eye-tracking.</li>
               <li>Built a VR-based driving simulator to prototype and evaluate visual interaction concepts.</li>
-              <li>Analysed user behaviour and interaction patterns to identify usability issues.</li>
-              <li>Published and presented at IEEE VR, ISMAR, and ICAT.</li>
+              <li>Analysed user behaviour patterns to identify usability issues and drive system improvements.</li>
+              <li>Published and presented research at IEEE VR, ISMAR, and ICAT.</li>
             </ul>
-            <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Python</span><span class="chip">R</span><span class="chip">Blender</span><span class="chip">Tobii</span><span class="chip">Quest Pro</span></div>
+            <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Python</span><span class="chip">R</span><span class="chip">Blender</span><span class="chip">Tobii</span><span class="chip">Quest Pro</span><span class="chip">Git</span></div>
           </div>
         </div>
       </div>
 
-      <div class="tl-row">
-        <div class="tl-meta"><div class="tl-dates">02/2022 – 08/2022</div><div class="tl-org">TechViz · Paris</div></div>
-        <div class="tl-body" onclick="dt('ex2','ac2')">
+      <div class="tl-item">
+        <div class="tl-side">
+          <div class="tl-yr">02/2022 – 08/2022</div>
+          <div class="tl-org">TechViz · Paris</div>
+          <span class="tl-badge" style="background:var(--c2b);color:var(--c2);">R&amp;D</span>
+        </div>
+        <div class="tl-body" onclick="dtog('d2','a2')">
           <div class="tl-top">
-            <div><div class="tl-title">R&amp;D Engineer — C++ / VR</div><div class="tl-place">Paris, France</div></div>
-            <svg class="tl-chevron open" id="ac2" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="var(--text-3)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><div class="tl-role">R&amp;D Engineer — C++ / VR</div><div class="tl-place">Paris, France</div></div>
+            <svg class="tl-chev op" id="a2" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="var(--lo)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="tl-detail" id="ex2" style="max-height:200px;">
+          <div class="tl-detail" id="d2" style="max-height:200px;">
             <ul class="tl-pts">
               <li>Developed and improved an automated testing platform alongside engineering teams.</li>
               <li>Collected and analysed user feedback to enhance usability and workflow efficiency.</li>
@@ -655,32 +778,39 @@ footer{
         </div>
       </div>
 
-      <div class="tl-row">
-        <div class="tl-meta"><div class="tl-dates">02/2021 – 08/2021</div><div class="tl-org">CNRS · Grenoble</div></div>
-        <div class="tl-body" onclick="dt('ex3','ac3')">
+      <div class="tl-item">
+        <div class="tl-side">
+          <div class="tl-yr">02/2021 – 08/2021</div>
+          <div class="tl-org">CNRS · Grenoble</div>
+          <span class="tl-badge" style="background:var(--c3b);color:var(--c3);">Published</span>
+        </div>
+        <div class="tl-body" onclick="dtog('d3','a3')">
           <div class="tl-top">
-            <div><div class="tl-title">Research Engineer — Graduation Project</div><div class="tl-place">Grenoble, France</div></div>
-            <svg class="tl-chevron open" id="ac3" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="var(--text-3)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><div class="tl-role">Research Engineer — Graduation Project</div><div class="tl-place">Grenoble, France</div></div>
+            <svg class="tl-chev op" id="a3" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="var(--lo)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="tl-detail" id="ex3" style="max-height:200px;">
+          <div class="tl-detail" id="d3" style="max-height:200px;">
             <ul class="tl-pts">
-              <li>Designed an immersive VR modelling system with full 3D operation support (resize, translate, rotate, Boolean).</li>
-              <li>Managed full development cycle: concept → prototype → user study → publication.</li>
-              <li>Presented at CAD 2021 conference.</li>
+              <li>Designed an immersive VR modelling system with full 3D operation support.</li>
+              <li>Managed full development cycle: concept → prototype → user study → publication (CAD 2021).</li>
             </ul>
             <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">SteamVR</span><span class="chip">FreeCAD</span><span class="chip">HTC Vive</span></div>
           </div>
         </div>
       </div>
 
-      <div class="tl-row">
-        <div class="tl-meta"><div class="tl-dates">02/2021 – 06/2021</div><div class="tl-org">Erasmus+</div></div>
-        <div class="tl-body" onclick="dt('ex4','ac4')">
+      <div class="tl-item">
+        <div class="tl-side">
+          <div class="tl-yr">02/2021 – 06/2021</div>
+          <div class="tl-org">Erasmus+</div>
+          <span class="tl-badge" style="background:var(--gold-dim);color:var(--gold);">Lead</span>
+        </div>
+        <div class="tl-body" onclick="dtog('d4','a4')">
           <div class="tl-top">
-            <div><div class="tl-title">Team Leader — AVATAR Project</div><div class="tl-place">Grenoble, France</div></div>
-            <svg class="tl-chevron open" id="ac4" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="var(--text-3)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><div class="tl-role">Team Leader — AVATAR Project</div><div class="tl-place">Grenoble, France</div></div>
+            <svg class="tl-chev op" id="a4" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5.5l4 4 4-4" stroke="var(--lo)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
-          <div class="tl-detail" id="ex4" style="max-height:200px;">
+          <div class="tl-detail" id="d4" style="max-height:200px;">
             <ul class="tl-pts">
               <li>Led 5 students from 4 European universities on a digital twin VR simulation project.</li>
               <li>Managed timeline, tasks, code reviews, and cross-cultural collaboration.</li>
@@ -694,43 +824,43 @@ footer{
   </div>
 </section>
 
-<!-- ── PROJECTS ── -->
-<section class="section fi" id="projects">
-  <div class="sec-head" onclick="tog('pr-b','pr-t')">
-    <span class="sec-label">Projects</span><span class="sec-rule"></span>
-    <div class="sec-btn open" id="pr-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<!-- ══ PROJECTS ══ -->
+<section class="sec fi" id="projects">
+  <div class="sec-hd" onclick="tog('pr-b','pr-t')">
+    <span class="sec-lbl">Projects</span><span class="sec-rule"></span>
+    <div class="sec-tog op" id="pr-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </div>
-  <div class="sec-body" id="pr-b" style="max-height:1000px;">
+  <div class="sec-body" id="pr-b" style="max-height:900px;">
     <div class="proj-grid">
       <div class="proj-card">
-        <div class="proj-thumb th-av"><span>🚗</span><span class="proj-badge pb-acc">PhD Research</span></div>
+        <div class="proj-thumb pt1"><span>🚗</span><span class="proj-badge pb-a">PhD Research</span></div>
         <div class="proj-body">
-          <div class="proj-title">VR Driving Simulator — Autonomous Vehicles</div>
-          <p class="proj-desc">Prototype to evaluate driver interaction with AV systems — measuring trust through HUD information changes and eye-tracking data.</p>
+          <div class="proj-ttl">VR Driving Simulator — Autonomous Vehicles</div>
+          <p class="proj-desc">Evaluated driver interaction with AV systems — measuring trust via HUD information changes tracked by Tobii eye-tracking.</p>
           <div class="chips"><span class="chip">Unity</span><span class="chip">C#</span><span class="chip">Quest Pro</span><span class="chip">Tobii</span><span class="chip">Python</span></div>
         </div>
       </div>
       <div class="proj-card">
-        <div class="proj-thumb th-vr"><span>🧊</span><span class="proj-badge pb-teal">Published · CAD 2021</span></div>
+        <div class="proj-thumb pt2"><span>🧊</span><span class="proj-badge pb-g">Published · CAD 2021</span></div>
         <div class="proj-body">
-          <div class="proj-title">Direct 3D Solid Modelling in VR</div>
-          <p class="proj-desc">Immersive system for direct VR solid modelling — resize, translate, rotate &amp; Boolean operations — fully evaluated in a user study.</p>
+          <div class="proj-ttl">Direct 3D Solid Modelling in VR</div>
+          <p class="proj-desc">Immersive system for direct VR solid modelling — resize, translate, rotate &amp; Boolean ops — fully validated in a user study.</p>
           <div class="chips"><span class="chip">Unity</span><span class="chip">SteamVR</span><span class="chip">FreeCAD</span><span class="chip">HTC Vive</span></div>
         </div>
       </div>
       <div class="proj-card">
-        <div class="proj-thumb th-cad"><span>⚙️</span><span class="proj-badge pb-acc">R&amp;D · TechViz</span></div>
+        <div class="proj-thumb pt3"><span>⚙️</span><span class="proj-badge pb-a">R&amp;D · TechViz</span></div>
         <div class="proj-body">
-          <div class="proj-title">Automated VR Testing Platform</div>
-          <p class="proj-desc">Improved an automated test platform for industrial VR with user feedback loops to enhance workflow efficiency and interface usability.</p>
+          <div class="proj-ttl">Automated VR Testing Platform</div>
+          <p class="proj-desc">Improved an automated test platform for industrial VR, using user feedback loops to enhance usability and workflow efficiency.</p>
           <div class="chips"><span class="chip">C++</span><span class="chip">C#</span><span class="chip">CAVE</span><span class="chip">Git</span></div>
         </div>
       </div>
       <div class="proj-card">
-        <div class="proj-thumb th-av2"><span>🌐</span><span class="proj-badge pb-teal">Erasmus+ · Open Source</span></div>
+        <div class="proj-thumb pt4"><span>🌐</span><span class="proj-badge pb-g">Erasmus+ · Open Source</span></div>
         <div class="proj-body">
-          <div class="proj-title">AVATAR — Digital Twin VR Simulation</div>
-          <p class="proj-desc">Led a 5-person international team building a digital twin VR simulation — open-source 3D modelling contributions and code reviews.</p>
+          <div class="proj-ttl">AVATAR — Digital Twin VR Simulation</div>
+          <p class="proj-desc">Led a 5-person international team building a digital twin VR simulation — open-source 3D modelling with code reviews.</p>
           <div class="chips"><span class="chip">Unity</span><span class="chip">ROS</span><span class="chip">Creo</span><span class="chip">MATLAB</span></div>
         </div>
       </div>
@@ -738,126 +868,146 @@ footer{
   </div>
 </section>
 
-<!-- ── PUBLICATIONS ── -->
-<section class="section fi" id="publications">
-  <div class="sec-head" onclick="tog('pb-b','pb-t')">
-    <span class="sec-label">Publications</span><span class="sec-rule"></span>
-    <div class="sec-btn open" id="pb-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<!-- ══ PUBLICATIONS ══ -->
+<section class="sec fi" id="publications">
+  <div class="sec-hd" onclick="tog('pb-b','pb-t')">
+    <span class="sec-lbl">Publications</span><span class="sec-rule"></span>
+    <div class="sec-tog op" id="pb-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </div>
-  <div class="sec-body" id="pb-b" style="max-height:400px;">
+  <div class="sec-body" id="pb-b" style="max-height:500px;">
     <div class="pub-list">
-      <div class="pub-card"><div class="pub-venue">IEEE VR</div><div class="pub-title">Impact of Adding, Removing and Modifying Driving and Non-Driving Related Information on Trust in Autonomous Vehicles</div></div>
-      <div class="pub-card"><div class="pub-venue">CAD 2021</div><div class="pub-title">Benchmarking of 3D Modelling in Virtual Reality</div></div>
-      <div class="pub-card"><div class="pub-venue">Conference</div><div class="pub-title">Direct Solid Modelling in Virtual Reality for Systems Architecting</div></div>
+      <div class="pub-item">
+        <div class="pub-left">
+          <div class="pub-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="2" stroke="var(--accent)" stroke-width="1.1"/><path d="M3 4h6M3 6h6M3 8h4" stroke="var(--accent)" stroke-width="1.1" stroke-linecap="round"/></svg></div>
+          <div class="pub-venue">IEEE VR</div>
+        </div>
+        <div>
+          <div class="pub-ttl">Impact of Adding, Removing and Modifying Driving and Non-Driving Related Information on Trust in Autonomous Vehicles</div>
+          <div class="pub-meta">IEEE VR Conference · Human-Machine Interaction</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-left">
+          <div class="pub-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="2" stroke="var(--accent)" stroke-width="1.1"/><path d="M3 4h6M3 6h6M3 8h4" stroke="var(--accent)" stroke-width="1.1" stroke-linecap="round"/></svg></div>
+          <div class="pub-venue">CAD 2021</div>
+        </div>
+        <div>
+          <div class="pub-ttl">Benchmarking of 3D Modelling in Virtual Reality</div>
+          <div class="pub-meta">CAD Conference 2021 · VR Interaction</div>
+        </div>
+      </div>
+      <div class="pub-item">
+        <div class="pub-left">
+          <div class="pub-ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="1" width="10" height="10" rx="2" stroke="var(--accent)" stroke-width="1.1"/><path d="M3 4h6M3 6h6M3 8h4" stroke="var(--accent)" stroke-width="1.1" stroke-linecap="round"/></svg></div>
+          <div class="pub-venue">Conf.</div>
+        </div>
+        <div>
+          <div class="pub-ttl">Direct Solid Modelling in Virtual Reality for Systems Architecting</div>
+          <div class="pub-meta">International Conference · Systems Engineering</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── CERTIFICATIONS ── -->
-<section class="section fi">
-  <div class="sec-head" onclick="tog('ct-b','ct-t')">
-    <span class="sec-label">Certifications</span><span class="sec-rule"></span>
-    <div class="sec-btn open" id="ct-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<!-- ══ CERTIFICATIONS ══ -->
+<section class="sec fi">
+  <div class="sec-hd" onclick="tog('ct-b','ct-t')">
+    <span class="sec-lbl">Certifications</span><span class="sec-rule"></span>
+    <div class="sec-tog op" id="ct-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </div>
   <div class="sec-body" id="ct-b" style="max-height:400px;">
     <div class="cert-list">
-      <div class="cert-card">
-        <div class="cert-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="4.5" stroke="var(--teal)" stroke-width="1.2"/><path d="M5.5 13.5L8 12l2.5 1.5" stroke="var(--teal)" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
-        <div><div class="cert-name">Advanced Virtual and Augmented Reality Toolkit for Learning</div><div class="cert-by">Erasmus Mundus</div></div>
+      <div class="cert-item">
+        <div class="cert-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="4" stroke="var(--c3)" stroke-width="1.2"/><path d="M5.5 13L8 11.5l2.5 1.5" stroke="var(--c3)" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        <div><div class="cert-nm">Advanced Virtual and Augmented Reality Toolkit for Learning</div><div class="cert-by">Erasmus Mundus</div></div>
       </div>
-      <div class="cert-card">
-        <div class="cert-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="4.5" stroke="var(--teal)" stroke-width="1.2"/><path d="M5.5 13.5L8 12l2.5 1.5" stroke="var(--teal)" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
-        <div><div class="cert-name">3D Interaction Design in Virtual Reality</div><div class="cert-by">Coursera · ID: 58YVZLJ89MV2</div></div>
+      <div class="cert-item">
+        <div class="cert-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="4" stroke="var(--c3)" stroke-width="1.2"/><path d="M5.5 13L8 11.5l2.5 1.5" stroke="var(--c3)" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        <div><div class="cert-nm">3D Interaction Design in Virtual Reality</div><div class="cert-by">Coursera · ID: 58YVZLJ89MV2</div></div>
       </div>
-      <div class="cert-card">
-        <div class="cert-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="4.5" stroke="var(--teal)" stroke-width="1.2"/><path d="M5.5 13.5L8 12l2.5 1.5" stroke="var(--teal)" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
-        <div><div class="cert-name">Building 3D Interactive and Social VR</div><div class="cert-by">Coursera · ID: LMPVNEAREDMS</div></div>
+      <div class="cert-item">
+        <div class="cert-ico"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="4" stroke="var(--c3)" stroke-width="1.2"/><path d="M5.5 13L8 11.5l2.5 1.5" stroke="var(--c3)" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        <div><div class="cert-nm">Building 3D Interactive and Social VR</div><div class="cert-by">Coursera · ID: LMPVNEAREDMS</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── EDUCATION ── -->
-<section class="section fi" id="education">
-  <div class="sec-head" onclick="tog('ed-b','ed-t')">
-    <span class="sec-label">Education</span><span class="sec-rule"></span>
-    <div class="sec-btn open" id="ed-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<!-- ══ EDUCATION ══ -->
+<section class="sec fi" id="education">
+  <div class="sec-hd" onclick="tog('ed-b','ed-t')">
+    <span class="sec-lbl">Education</span><span class="sec-rule"></span>
+    <div class="sec-tog op" id="ed-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </div>
   <div class="sec-body" id="ed-b" style="max-height:400px;">
     <div class="edu-grid">
       <div class="edu-card">
+        <div class="edu-stripe"></div>
         <div class="edu-deg">PhD in Computer Science</div>
         <div class="edu-inst">IMT Atlantique &amp; Adelaide University</div>
         <div class="edu-yr">2022 – 2025</div>
-        <span class="edu-note">France–Australia Cotutelle</span>
+        <span class="edu-badge">France–Australia Cotutelle</span>
       </div>
       <div class="edu-card">
+        <div class="edu-stripe"></div>
         <div class="edu-deg">Engineer's Degree — Product Engineering</div>
         <div class="edu-inst">Grenoble INP</div>
         <div class="edu-yr">2018 – 2021</div>
-        <span class="edu-note">Eiffel Excellence Scholarship</span>
+        <span class="edu-badge">Eiffel Excellence Scholarship</span>
       </div>
       <div class="edu-card">
+        <div class="edu-stripe"></div>
         <div class="edu-deg">Engineer's Degree — Automated Production</div>
         <div class="edu-inst">Danang University of Technology</div>
         <div class="edu-yr">2015 – 2018</div>
-        <span class="edu-note">Top 1 of 80 students</span>
+        <span class="edu-badge">Top 1 of 80 students</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── LANGUAGES ── -->
-<section class="section fi">
-  <div class="sec-head" onclick="tog('lg-b','lg-t')">
-    <span class="sec-label">Languages</span><span class="sec-rule"></span>
-    <div class="sec-btn open" id="lg-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<!-- ══ LANGUAGES ══ -->
+<section class="sec fi">
+  <div class="sec-hd" onclick="tog('lg-b','lg-t')">
+    <span class="sec-lbl">Languages</span><span class="sec-rule"></span>
+    <div class="sec-tog op" id="lg-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </div>
   <div class="sec-body" id="lg-b" style="max-height:140px;">
     <div class="lang-row">
-      <div class="lang-card"><span class="lang-name">English</span><span class="lang-lvl">Fluent</span></div>
-      <div class="lang-card"><span class="lang-name">French</span><span class="lang-lvl">Fluent</span></div>
-      <div class="lang-card"><span class="lang-name">Vietnamese</span><span class="lang-lvl">Native</span></div>
+      <div class="lang-card"><span class="lang-nm">English</span><span class="lang-lv">Fluent</span></div>
+      <div class="lang-card"><span class="lang-nm">French</span><span class="lang-lv">Fluent</span></div>
+      <div class="lang-card"><span class="lang-nm">Vietnamese</span><span class="lang-lv">Native</span></div>
     </div>
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
-<section class="section fi" id="contact">
-  <div class="sec-head" onclick="tog('co-b','co-t')">
-    <span class="sec-label">Contact</span><span class="sec-rule"></span>
-    <div class="sec-btn open" id="co-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<!-- ══ CONTACT ══ -->
+<section class="sec fi" id="contact">
+  <div class="sec-hd" onclick="tog('co-b','co-t')">
+    <span class="sec-lbl">Contact</span><span class="sec-rule"></span>
+    <div class="sec-tog op" id="co-t"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </div>
   <div class="sec-body" id="co-b" style="max-height:600px;">
-    <div class="contact-wrap">
-      <div class="contact-info">
-        <div>
-          <div class="info-label">Email</div>
-          <a class="info-val" href="mailto:tthithanhhoa@gmail.com">tthithanhhoa@gmail.com</a>
-        </div>
-        <div>
-          <div class="info-label">Phone</div>
-          <a class="info-val" href="tel:+33664337524">+33 06 64 33 75 24</a>
-        </div>
-        <div>
-          <div class="info-label">Location</div>
-          <span class="info-val" style="cursor:default;">Rennes, France</span>
-        </div>
-        <div>
-          <div class="info-label">LinkedIn</div>
-          <a class="info-val" href="#">linkedin.com/in/yourprofile</a>
-        </div>
+    <div class="contact-layout">
+      <div class="contact-meta">
+        <div class="cm-group"><div class="cm-lbl">Email</div><a class="cm-val" href="mailto:tthithanhhoa@gmail.com">tthithanhhoa@gmail.com</a></div>
+        <div class="cm-group"><div class="cm-lbl">Phone</div><a class="cm-val" href="tel:+33664337524">+33 06 64 33 75 24</a></div>
+        <div class="cm-group"><div class="cm-lbl">Location</div><span class="cm-val" style="cursor:default;">Rennes, France</span></div>
+        <div class="cm-group"><div class="cm-lbl">LinkedIn</div><a class="cm-val" href="#">linkedin.com/in/yourprofile</a></div>
       </div>
-      <div class="contact-form" id="cForm">
-        <div class="f-row">
-          <div class="f-field"><label class="f-label">Name</label><input type="text" class="f-input" placeholder="Your name" id="cN"></div>
-          <div class="f-field"><label class="f-label">Email</label><input type="email" class="f-input" placeholder="your@email.com" id="cE"></div>
+      <div class="cf" id="cForm">
+        <div class="cf-row">
+          <div class="cf-field"><label class="cf-lbl">Name</label><input type="text" class="cf-in" placeholder="Your name" id="cN"></div>
+          <div class="cf-field"><label class="cf-lbl">Email</label><input type="email" class="cf-in" placeholder="your@email.com" id="cE"></div>
         </div>
-        <div class="f-field"><label class="f-label">Company / Role</label><input type="text" class="f-input" placeholder="e.g. Renault · UX Researcher" id="cC"></div>
-        <div class="f-field"><label class="f-label">Message</label><textarea class="f-area" placeholder="Tell me about the opportunity..." id="cM"></textarea></div>
-        <button class="f-submit" onclick="sendForm()">Send message</button>
-        <p class="f-note">Opens your email client — no server required.</p>
-        <p class="f-ok" id="fOk">&#10003; Email client opened. Thank you!</p>
+        <div class="cf-field"><label class="cf-lbl">Company / Role</label><input type="text" class="cf-in" placeholder="e.g. Renault · UX Researcher" id="cC"></div>
+        <div class="cf-field"><label class="cf-lbl">Message</label><textarea class="cf-ta" placeholder="Tell me about the opportunity..." id="cM"></textarea></div>
+        <div class="cf-foot">
+          <button class="cf-btn" onclick="sendForm()">Send message</button>
+          <span class="cf-note">Opens your email client — no server needed.</span>
+        </div>
+        <p class="cf-ok" id="fOk">&#10003; Email client opened. Thank you for reaching out!</p>
       </div>
     </div>
   </div>
@@ -866,69 +1016,62 @@ footer{
 </div><!-- /wrap -->
 
 <footer>
-  <span class="footer-name">Tran Thi Thanh Hoa</span>
-  <span class="footer-note">Human Factors &amp; HMI Engineer · PhD · Rennes, France</span>
+  <span class="ft-logo">Tran Thi Thanh Hoa</span>
+  <span>Human Factors &amp; HMI Engineer · PhD · Rennes, France</span>
 </footer>
 
 <script>
-/* ── PROGRESS BAR ── */
+/* PROGRESS */
 window.addEventListener('scroll',()=>{
   const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
   document.getElementById('prog').style.width=Math.min(p,100)+'%';
 });
 
-/* ── ACTIVE NAV ── */
-const ids=['skills','experience','projects','publications','education','contact'];
+/* THEME */
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  localStorage.setItem('theme',t);
+  document.getElementById('tDark').classList.toggle('active',t==='dark');
+  document.getElementById('tLight').classList.toggle('active',t==='light');
+}
+(()=>{setTheme(localStorage.getItem('theme')||'dark');})();
+
+/* ACTIVE NAV */
 const sio=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    if(e.isIntersecting){
-      document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-      const lk=document.querySelector('.nav-links a[href="#'+e.target.id+'"]');
-      if(lk)lk.classList.add('active');
-    }
+    if(!e.isIntersecting)return;
+    document.querySelectorAll('.n-links a').forEach(a=>a.classList.remove('on'));
+    const lk=document.querySelector('.n-links a[href="#'+e.target.id+'"]');
+    if(lk)lk.classList.add('on');
   });
-},{rootMargin:'-38% 0px -58% 0px'});
-ids.forEach(id=>{const el=document.getElementById(id);if(el)sio.observe(el);});
-
-/* ── FADE IN ── */
-const fio=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');fio.unobserve(e.target);}});
-},{threshold:0.07});
-document.querySelectorAll('.fi').forEach(el=>fio.observe(el));
-
-/* ── SECTION COLLAPSE ── */
-function tog(bId,tId){
-  const b=document.getElementById(bId);
-  const t=document.getElementById(tId);
-  const isOpen=!b.classList.contains('shut');
-  b.classList.toggle('shut',isOpen);
-  t.classList.toggle('open',!isOpen);
-}
-
-/* ── TIMELINE DETAIL ── */
-function dt(dId,aId){
-  const d=document.getElementById(dId);
-  const a=document.getElementById(aId);
-  const isOpen=!d.classList.contains('shut');
-  d.classList.toggle('shut',isOpen);
-  a.classList.toggle('open',!isOpen);
-}
-
-/* ── THEME TOGGLE ── */
-const html=document.documentElement;
-const themeBtn=document.getElementById('themeBtn');
-// Persist preference
-const saved=localStorage.getItem('theme');
-if(saved)html.setAttribute('data-theme',saved);
-
-themeBtn.addEventListener('click',()=>{
-  const cur=html.getAttribute('data-theme');
-  const next=cur==='dark'?'light':'dark';
-  html.setAttribute('data-theme',next);
-  localStorage.setItem('theme',next);
+},{rootMargin:'-36% 0px -60% 0px'});
+['skills','experience','projects','publications','education','contact'].forEach(id=>{
+  const el=document.getElementById(id);if(el)sio.observe(el);
 });
 
-/* ── CONTACT FORM ── */
+/* FADE IN */
+const fio=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');fio.unobserve(e.target);}});
+},{threshold:0.06});
+document.querySelectorAll('.fi').forEach(el=>fio.observe(el));
+
+/* SECTION TOGGLE */
+function tog(bId,tId){
+  const b=document.getElementById(bId),t=document.getElementById(tId);
+  const open=!b.classList.contains('cl');
+  b.classList.toggle('cl',open);
+  t.classList.toggle('op',!open);
+}
+
+/* TIMELINE DETAIL */
+function dtog(dId,aId){
+  const d=document.getElementById(dId),a=document.getElementById(aId);
+  const open=!d.classList.contains('cl');
+  d.classList.toggle('cl',open);
+  a.classList.toggle('op',!open);
+}
+
+/* CONTACT FORM */
 function sendForm(){
   const n=document.getElementById('cN').value.trim();
   const e=document.getElementById('cE').value.trim();
